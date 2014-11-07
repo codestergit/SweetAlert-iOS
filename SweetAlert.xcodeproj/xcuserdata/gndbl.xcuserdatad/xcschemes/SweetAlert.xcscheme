@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B4CD1071A06E55200B65DE0"
-               BuildableName = "GNDBLAlert.app"
-               BlueprintName = "GNDBLAlert"
-               ReferencedContainer = "container:GNDBLAlert.xcodeproj">
+               BuildableName = "SweetAlert.app"
+               BlueprintName = "SweetAlert"
+               ReferencedContainer = "container:SweetAlert.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B4CD11C1A06E55300B65DE0"
-               BuildableName = "GNDBLAlertTests.xctest"
-               BlueprintName = "GNDBLAlertTests"
-               ReferencedContainer = "container:GNDBLAlert.xcodeproj">
+               BuildableName = "SweetAlertTests.xctest"
+               BlueprintName = "SweetAlertTests"
+               ReferencedContainer = "container:SweetAlert.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "9B4CD11C1A06E55300B65DE0"
-               BuildableName = "GNDBLAlertTests.xctest"
-               BlueprintName = "GNDBLAlertTests"
-               ReferencedContainer = "container:GNDBLAlert.xcodeproj">
+               BuildableName = "SweetAlertTests.xctest"
+               BlueprintName = "SweetAlertTests"
+               ReferencedContainer = "container:SweetAlert.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B4CD1071A06E55200B65DE0"
-            BuildableName = "GNDBLAlert.app"
-            BlueprintName = "GNDBLAlert"
-            ReferencedContainer = "container:GNDBLAlert.xcodeproj">
+            BuildableName = "SweetAlert.app"
+            BlueprintName = "SweetAlert"
+            ReferencedContainer = "container:SweetAlert.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,12 +76,17 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B4CD1071A06E55200B65DE0"
-            BuildableName = "GNDBLAlert.app"
-            BlueprintName = "GNDBLAlert"
-            ReferencedContainer = "container:GNDBLAlert.xcodeproj">
+            BuildableName = "SweetAlert.app"
+            BlueprintName = "SweetAlert"
+            ReferencedContainer = "container:SweetAlert.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
+         <AdditionalOption
+            key = "NSZombieEnabled"
+            value = "YES"
+            isEnabled = "YES">
+         </AdditionalOption>
       </AdditionalOptions>
    </LaunchAction>
    <ProfileAction
@@ -94,9 +99,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "9B4CD1071A06E55200B65DE0"
-            BuildableName = "GNDBLAlert.app"
-            BlueprintName = "GNDBLAlert"
-            ReferencedContainer = "container:GNDBLAlert.xcodeproj">
+            BuildableName = "SweetAlert.app"
+            BlueprintName = "SweetAlert"
+            ReferencedContainer = "container:SweetAlert.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

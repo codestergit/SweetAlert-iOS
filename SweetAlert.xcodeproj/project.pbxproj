@@ -12,30 +12,28 @@
 		9B4CD1131A06E55300B65DE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4CD1111A06E55300B65DE0 /* Main.storyboard */; };
 		9B4CD1151A06E55300B65DE0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4CD1141A06E55300B65DE0 /* Images.xcassets */; };
 		9B4CD1181A06E55300B65DE0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B4CD1161A06E55300B65DE0 /* LaunchScreen.xib */; };
-		9B4CD1241A06E55300B65DE0 /* GNDBLAlertTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CD1231A06E55300B65DE0 /* GNDBLAlertTests.swift */; };
+		9B4CD12F1A06E80A00B65DE0 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4CD12E1A06E80A00B65DE0 /* SweetAlert.swift */; };
+		9B4CD1311A06E9C400B65DE0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B4CD1301A06E9C400B65DE0 /* QuartzCore.framework */; };
+		9BBDAC921A0BEB8100C77BED /* SweetAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBDAC911A0BEB8100C77BED /* SweetAlert.png */; };
+		9BBDAC941A0BF45D00C77BED /* logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BBDAC931A0BF45D00C77BED /* logo_big.png */; };
+		9BBDAC971A0C6EE600C77BED /* thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BBDAC951A0C6DA200C77BED /* thumb.jpg */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		9B4CD11E1A06E55300B65DE0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9B4CD1001A06E55200B65DE0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9B4CD1071A06E55200B65DE0;
-			remoteInfo = GNDBLAlert;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		9B4CD1081A06E55200B65DE0 /* GNDBLAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GNDBLAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B4CD1081A06E55200B65DE0 /* SweetAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4CD10C1A06E55300B65DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9B4CD10D1A06E55300B65DE0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9B4CD10F1A06E55300B65DE0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9B4CD1121A06E55300B65DE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9B4CD1141A06E55300B65DE0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9B4CD1171A06E55300B65DE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		9B4CD11D1A06E55300B65DE0 /* GNDBLAlertTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GNDBLAlertTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4CD1221A06E55300B65DE0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9B4CD1231A06E55300B65DE0 /* GNDBLAlertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GNDBLAlertTests.swift; sourceTree = "<group>"; };
+		9B4CD1231A06E55300B65DE0 /* SweetAlertTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetAlertTests.swift; sourceTree = "<group>"; };
+		9B4CD12E1A06E80A00B65DE0 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
+		9B4CD1301A06E9C400B65DE0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9BBDAC911A0BEB8100C77BED /* SweetAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SweetAlert.png; sourceTree = "<group>"; };
+		9BBDAC931A0BF45D00C77BED /* logo_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_big.png; path = ../GNDBLAlert/logo_big.png; sourceTree = "<group>"; };
+		9BBDAC951A0C6DA200C77BED /* thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,13 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9B4CD11A1A06E55300B65DE0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				9B4CD1311A06E9C400B65DE0 /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,7 +51,8 @@
 		9B4CD0FF1A06E55200B65DE0 = {
 			isa = PBXGroup;
 			children = (
-				9B4CD10A1A06E55200B65DE0 /* GNDBLAlert */,
+				9B4CD1301A06E9C400B65DE0 /* QuartzCore.framework */,
+				9B4CD10A1A06E55200B65DE0 /* SweetAlert */,
 				9B4CD1201A06E55300B65DE0 /* GNDBLAlertTests */,
 				9B4CD1091A06E55200B65DE0 /* Products */,
 			);
@@ -68,15 +61,15 @@
 		9B4CD1091A06E55200B65DE0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B4CD1081A06E55200B65DE0 /* GNDBLAlert.app */,
-				9B4CD11D1A06E55300B65DE0 /* GNDBLAlertTests.xctest */,
+				9B4CD1081A06E55200B65DE0 /* SweetAlert.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9B4CD10A1A06E55200B65DE0 /* GNDBLAlert */ = {
+		9B4CD10A1A06E55200B65DE0 /* SweetAlert */ = {
 			isa = PBXGroup;
 			children = (
+				9B4CD12D1A06E7EF00B65DE0 /* SweetAlertView */,
 				9B4CD10D1A06E55300B65DE0 /* AppDelegate.swift */,
 				9B4CD10F1A06E55300B65DE0 /* ViewController.swift */,
 				9B4CD1111A06E55300B65DE0 /* Main.storyboard */,
@@ -84,12 +77,14 @@
 				9B4CD1161A06E55300B65DE0 /* LaunchScreen.xib */,
 				9B4CD10B1A06E55200B65DE0 /* Supporting Files */,
 			);
+			name = SweetAlert;
 			path = GNDBLAlert;
 			sourceTree = "<group>";
 		};
 		9B4CD10B1A06E55200B65DE0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9BBDAC911A0BEB8100C77BED /* SweetAlert.png */,
 				9B4CD10C1A06E55300B65DE0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -98,7 +93,7 @@
 		9B4CD1201A06E55300B65DE0 /* GNDBLAlertTests */ = {
 			isa = PBXGroup;
 			children = (
-				9B4CD1231A06E55300B65DE0 /* GNDBLAlertTests.swift */,
+				9B4CD1231A06E55300B65DE0 /* SweetAlertTests.swift */,
 				9B4CD1211A06E55300B65DE0 /* Supporting Files */,
 			);
 			path = GNDBLAlertTests;
@@ -107,17 +102,27 @@
 		9B4CD1211A06E55300B65DE0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9BBDAC931A0BF45D00C77BED /* logo_big.png */,
+				9BBDAC951A0C6DA200C77BED /* thumb.jpg */,
 				9B4CD1221A06E55300B65DE0 /* Info.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		9B4CD12D1A06E7EF00B65DE0 /* SweetAlertView */ = {
+			isa = PBXGroup;
+			children = (
+				9B4CD12E1A06E80A00B65DE0 /* SweetAlert.swift */,
+			);
+			name = SweetAlertView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B4CD1071A06E55200B65DE0 /* GNDBLAlert */ = {
+		9B4CD1071A06E55200B65DE0 /* SweetAlert */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B4CD1271A06E55300B65DE0 /* Build configuration list for PBXNativeTarget "GNDBLAlert" */;
+			buildConfigurationList = 9B4CD1271A06E55300B65DE0 /* Build configuration list for PBXNativeTarget "SweetAlert" */;
 			buildPhases = (
 				9B4CD1041A06E55200B65DE0 /* Sources */,
 				9B4CD1051A06E55200B65DE0 /* Frameworks */,
@@ -127,28 +132,10 @@
 			);
 			dependencies = (
 			);
-			name = GNDBLAlert;
+			name = SweetAlert;
 			productName = GNDBLAlert;
-			productReference = 9B4CD1081A06E55200B65DE0 /* GNDBLAlert.app */;
+			productReference = 9B4CD1081A06E55200B65DE0 /* SweetAlert.app */;
 			productType = "com.apple.product-type.application";
-		};
-		9B4CD11C1A06E55300B65DE0 /* GNDBLAlertTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9B4CD12A1A06E55300B65DE0 /* Build configuration list for PBXNativeTarget "GNDBLAlertTests" */;
-			buildPhases = (
-				9B4CD1191A06E55300B65DE0 /* Sources */,
-				9B4CD11A1A06E55300B65DE0 /* Frameworks */,
-				9B4CD11B1A06E55300B65DE0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9B4CD11F1A06E55300B65DE0 /* PBXTargetDependency */,
-			);
-			name = GNDBLAlertTests;
-			productName = GNDBLAlertTests;
-			productReference = 9B4CD11D1A06E55300B65DE0 /* GNDBLAlertTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -162,13 +149,9 @@
 					9B4CD1071A06E55200B65DE0 = {
 						CreatedOnToolsVersion = 6.1;
 					};
-					9B4CD11C1A06E55300B65DE0 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 9B4CD1071A06E55200B65DE0;
-					};
 				};
 			};
-			buildConfigurationList = 9B4CD1031A06E55200B65DE0 /* Build configuration list for PBXProject "GNDBLAlert" */;
+			buildConfigurationList = 9B4CD1031A06E55200B65DE0 /* Build configuration list for PBXProject "SweetAlert" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -181,8 +164,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B4CD1071A06E55200B65DE0 /* GNDBLAlert */,
-				9B4CD11C1A06E55300B65DE0 /* GNDBLAlertTests */,
+				9B4CD1071A06E55200B65DE0 /* SweetAlert */,
 			);
 		};
 /* End PBXProject section */
@@ -192,16 +174,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9BBDAC971A0C6EE600C77BED /* thumb.jpg in Resources */,
 				9B4CD1131A06E55300B65DE0 /* Main.storyboard in Resources */,
 				9B4CD1181A06E55300B65DE0 /* LaunchScreen.xib in Resources */,
 				9B4CD1151A06E55300B65DE0 /* Images.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9B4CD11B1A06E55300B65DE0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				9BBDAC941A0BF45D00C77BED /* logo_big.png in Resources */,
+				9BBDAC921A0BEB8100C77BED /* SweetAlert.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,26 +192,11 @@
 			files = (
 				9B4CD1101A06E55300B65DE0 /* ViewController.swift in Sources */,
 				9B4CD10E1A06E55300B65DE0 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9B4CD1191A06E55300B65DE0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9B4CD1241A06E55300B65DE0 /* GNDBLAlertTests.swift in Sources */,
+				9B4CD12F1A06E80A00B65DE0 /* SweetAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9B4CD11F1A06E55300B65DE0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9B4CD1071A06E55200B65DE0 /* GNDBLAlert */;
-			targetProxy = 9B4CD11E1A06E55300B65DE0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9B4CD1111A06E55300B65DE0 /* Main.storyboard */ = {
@@ -352,44 +315,10 @@
 			};
 			name = Release;
 		};
-		9B4CD12B1A06E55300B65DE0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GNDBLAlertTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GNDBLAlert.app/GNDBLAlert";
-			};
-			name = Debug;
-		};
-		9B4CD12C1A06E55300B65DE0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = GNDBLAlertTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GNDBLAlert.app/GNDBLAlert";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B4CD1031A06E55200B65DE0 /* Build configuration list for PBXProject "GNDBLAlert" */ = {
+		9B4CD1031A06E55200B65DE0 /* Build configuration list for PBXProject "SweetAlert" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B4CD1251A06E55300B65DE0 /* Debug */,
@@ -398,21 +327,14 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B4CD1271A06E55300B65DE0 /* Build configuration list for PBXNativeTarget "GNDBLAlert" */ = {
+		9B4CD1271A06E55300B65DE0 /* Build configuration list for PBXNativeTarget "SweetAlert" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B4CD1281A06E55300B65DE0 /* Debug */,
 				9B4CD1291A06E55300B65DE0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-		};
-		9B4CD12A1A06E55300B65DE0 /* Build configuration list for PBXNativeTarget "GNDBLAlertTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9B4CD12B1A06E55300B65DE0 /* Debug */,
-				9B4CD12C1A06E55300B65DE0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

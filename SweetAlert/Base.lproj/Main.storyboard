@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="GNDBLAlert" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_big.png" translatesAutoresizingMaskIntoConstraints="NO" id="hG3-7w-tPQ">
+                                <rect key="frame" x="205" y="16" width="190" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="6ge-Jv-XDj"/>
+                                    <constraint firstAttribute="width" constant="190" id="C0E-1K-5Mb"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x4Z-Rh-1Xc">
+                                <rect key="frame" x="240" y="171" width="120" height="47"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.87058823529999996" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="wvm-lS-UFQ"/>
+                                    <constraint firstAttribute="height" constant="47" id="yhW-8a-F3u"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Try Me">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="subtitleAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="MdX-Ze-nTr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ysE-3f-pfS">
+                                <rect key="frame" x="240" y="515" width="120" height="47"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.87058823529999996" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="0x8-aQ-vr6"/>
+                                    <constraint firstAttribute="height" constant="47" id="qrI-go-n8m"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Try Me">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="customIconAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="lkp-My-RHK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haU-E3-P25">
+                                <rect key="frame" x="240" y="261" width="120" height="47"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.87058823529999996" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="aSs-fn-c5T"/>
+                                    <constraint firstAttribute="height" constant="47" id="ny6-WL-TfZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Try Me">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sucessAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="B3S-UA-Vef"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3XR-gr-Jg4">
+                                <rect key="frame" x="240" y="440" width="120" height="47"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.87058823529999996" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="pgp-x9-xDF"/>
+                                    <constraint firstAttribute="width" constant="120" id="qzy-eO-aN1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Try Me">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelAndConfirm:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ow0-08-qN8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2GO-Ly-LBL">
+                                <rect key="frame" x="240" y="84" width="120" height="47"/>
+                                <color key="backgroundColor" red="0.68235294117647061" green="0.87058823529411766" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="FvJ-gG-dCa"/>
+                                    <constraint firstAttribute="width" constant="120" id="rtz-Gn-qip"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Try Me">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="aBasicMessageAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="gj2-rX-mM5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A title with text under" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Wk-Dd-HP5">
+                                <rect key="frame" x="216" y="147" width="163" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.54509803921568623" green="0.56470588235294117" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A basic message" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ydB-En-OHF">
+                                <rect key="frame" x="235" y="63" width="131" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.54509803921568623" green="0.56470588235294117" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A message with custom image" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N41-HA-s9t">
+                                <rect key="frame" x="183" y="491" width="235" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.54509803921568623" green="0.56470588235294117" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A success message!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gSC-Pf-T1T">
+                                <rect key="frame" x="221" y="234" width="158" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.54509803921568623" green="0.56470588235294117" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yTy-6t-4Bt">
+                                <rect key="frame" x="240" y="362" width="120" height="47"/>
+                                <color key="backgroundColor" red="0.68235294120000001" green="0.87058823529999996" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="a9u-nh-kTA"/>
+                                    <constraint firstAttribute="height" constant="47" id="peT-w1-z8H"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <state key="normal" title="Try Me">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="warningAlert:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ELx-Lv-9t6"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Action on Cancel and Confirm button" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QyU-W7-sr0">
+                                <rect key="frame" x="109" y="417" width="383" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="383" id="5PY-Ia-4yp"/>
+                                    <constraint firstAttribute="height" constant="15" id="YQD-tr-XUh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.5450980392" green="0.56470588239999997" blue="0.58039215690000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A warning message, with a function action on &quot;Confirm&quot;-button" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DiC-45-hOe">
+                                <rect key="frame" x="150" y="316" width="300" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="43" id="4yQ-nh-QLd"/>
+                                    <constraint firstAttribute="width" constant="384" id="CEN-qC-6UK"/>
+                                    <constraint firstAttribute="width" constant="300" id="luI-c2-XbR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.54509803921568623" green="0.56470588235294117" blue="0.58039215686274515" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CEN-qC-6UK"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94901960784313721" green="0.95686274509803926" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="hG3-7w-tPQ" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="-4" id="45q-Qs-eaE"/>
+                            <constraint firstItem="x4Z-Rh-1Xc" firstAttribute="top" secondItem="1Wk-Dd-HP5" secondAttribute="bottom" constant="3" id="BGv-ug-V1D"/>
+                            <constraint firstItem="QyU-W7-sr0" firstAttribute="top" secondItem="yTy-6t-4Bt" secondAttribute="bottom" constant="8" id="Hs6-ex-9R0"/>
+                            <constraint firstItem="ysE-3f-pfS" firstAttribute="top" secondItem="N41-HA-s9t" secondAttribute="bottom" constant="3" id="I46-iI-ovp"/>
+                            <constraint firstItem="hG3-7w-tPQ" firstAttribute="centerX" secondItem="ydB-En-OHF" secondAttribute="centerX" constant="-0.5" id="MWU-PT-KnW"/>
+                            <constraint firstItem="2GO-Ly-LBL" firstAttribute="top" secondItem="ydB-En-OHF" secondAttribute="bottom" id="N3d-zE-DHa"/>
+                            <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="DiC-45-hOe" secondAttribute="trailing" constant="10" id="SDd-LD-hxS"/>
+                            <constraint firstItem="x4Z-Rh-1Xc" firstAttribute="centerX" secondItem="gSC-Pf-T1T" secondAttribute="centerX" id="SfP-ab-pt9"/>
+                            <constraint firstItem="QyU-W7-sr0" firstAttribute="centerX" secondItem="3XR-gr-Jg4" secondAttribute="centerX" constant="0.5" id="Szm-Lg-MWL"/>
+                            <constraint firstItem="ydB-En-OHF" firstAttribute="centerX" secondItem="2GO-Ly-LBL" secondAttribute="centerX" constant="0.5" id="U3F-RI-pyx"/>
+                            <constraint firstItem="yTy-6t-4Bt" firstAttribute="centerX" secondItem="DiC-45-hOe" secondAttribute="centerX" id="VVN-dm-O9j"/>
+                            <constraint firstItem="haU-E3-P25" firstAttribute="centerX" secondItem="N41-HA-s9t" secondAttribute="centerX" id="blt-JX-ezC"/>
+                            <constraint firstItem="DiC-45-hOe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="e2b-cE-xye"/>
+                            <constraint firstItem="N41-HA-s9t" firstAttribute="top" secondItem="haU-E3-P25" secondAttribute="bottom" constant="183" id="esr-ME-rih"/>
+                            <constraint firstItem="DiC-45-hOe" firstAttribute="top" secondItem="ysE-3f-pfS" secondAttribute="bottom" constant="-246" id="ewd-yL-RsZ"/>
+                            <constraint firstItem="1Wk-Dd-HP5" firstAttribute="centerX" secondItem="x4Z-Rh-1Xc" secondAttribute="centerX" constant="-2.5" id="iQE-JY-utI"/>
+                            <constraint firstItem="N41-HA-s9t" firstAttribute="centerX" secondItem="ysE-3f-pfS" secondAttribute="centerX" id="jNK-sp-Ol1"/>
+                            <constraint firstAttribute="centerX" secondItem="hG3-7w-tPQ" secondAttribute="centerX" id="jfb-5J-NuL"/>
+                            <constraint firstItem="1Wk-Dd-HP5" firstAttribute="top" secondItem="2GO-Ly-LBL" secondAttribute="bottom" constant="16" id="k61-18-vFE"/>
+                            <constraint firstItem="haU-E3-P25" firstAttribute="centerX" secondItem="gSC-Pf-T1T" secondAttribute="centerX" id="ojv-6D-bmK"/>
+                            <constraint firstItem="1Wk-Dd-HP5" firstAttribute="centerX" secondItem="2GO-Ly-LBL" secondAttribute="centerX" constant="-2.5" id="ovq-Sd-Qzm"/>
+                            <constraint firstItem="haU-E3-P25" firstAttribute="top" secondItem="gSC-Pf-T1T" secondAttribute="bottom" constant="6" id="phn-Dm-tqq"/>
+                            <constraint firstItem="ydB-En-OHF" firstAttribute="top" secondItem="hG3-7w-tPQ" secondAttribute="bottom" constant="7" id="r5v-g2-8bT"/>
+                            <constraint firstItem="gSC-Pf-T1T" firstAttribute="top" secondItem="x4Z-Rh-1Xc" secondAttribute="bottom" constant="16" id="rLK-Iz-V6W"/>
+                            <constraint firstItem="yTy-6t-4Bt" firstAttribute="top" secondItem="DiC-45-hOe" secondAttribute="bottom" constant="3" id="s3R-6A-EjJ"/>
+                            <constraint firstItem="QyU-W7-sr0" firstAttribute="centerX" secondItem="yTy-6t-4Bt" secondAttribute="centerX" constant="0.5" id="slj-DU-dB1"/>
+                            <constraint firstItem="DiC-45-hOe" firstAttribute="centerX" secondItem="ysE-3f-pfS" secondAttribute="centerX" id="u2e-JU-NqP"/>
+                            <constraint firstItem="3XR-gr-Jg4" firstAttribute="top" secondItem="QyU-W7-sr0" secondAttribute="bottom" constant="8" id="uyj-CH-rsK"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="304" y="273"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="logo_big.png" width="385" height="81"/>
+    </resources>
+</document>
