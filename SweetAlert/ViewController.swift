@@ -42,10 +42,6 @@ class ViewController: UIViewController {
         SweetAlert().showAlert("Good job!", subTitle: "You clicked the button!", style: AlertStyle.Success)
     }
     
-    @IBAction func customIconAlert(sender: AnyObject) {
-        SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: AlertStyle.CustomImag(imageFile: "thumb.jpg"))
-    }
-    
     @IBAction func warningAlert(sender: AnyObject) {
         SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.Warning, buttonTitle:"Cancel", buttonColor:UIColorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
@@ -69,6 +65,10 @@ class ViewController: UIViewController {
             }
         }
 
+    }
+    
+    @IBAction func customIconAlert(sender: AnyObject) {
+        SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: AlertStyle.CustomImag(imageFile: "thumb.jpg"))
     }
     
 }

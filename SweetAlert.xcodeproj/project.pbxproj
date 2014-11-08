@@ -17,6 +17,7 @@
 		9B4286F91A0D2FC500E9913B /* logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286F61A0D2FC500E9913B /* logo_big.png */; };
 		9B4286FA1A0D2FC500E9913B /* SweetAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286F71A0D2FC500E9913B /* SweetAlert.png */; };
 		9B4CD1311A06E9C400B65DE0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B4CD1301A06E9C400B65DE0 /* QuartzCore.framework */; };
+		9BCAC7A51A0E0B3600282753 /* thumb.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 9BCAC7A41A0E0B3600282753 /* thumb.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		9B4286F71A0D2FC500E9913B /* SweetAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SweetAlert.png; path = SweetAlert/SweetAlert.png; sourceTree = SOURCE_ROOT; };
 		9B4CD1081A06E55200B65DE0 /* SweetAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4CD1301A06E9C400B65DE0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9BCAC7A41A0E0B3600282753 /* thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb.jpg; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		9B4CD10B1A06E55200B65DE0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9BCAC7A41A0E0B3600282753 /* thumb.jpg */,
 				9B4286FB1A0D300300E9913B /* Frameworks */,
 				9B4286F51A0D2FC500E9913B /* Info.plist */,
 				9B4286F61A0D2FC500E9913B /* logo_big.png */,
@@ -166,6 +169,7 @@
 				9B4286EE1A0D2FA000E9913B /* Images.xcassets in Resources */,
 				9B4286F41A0D2FAF00E9913B /* Main.storyboard in Resources */,
 				9B4286F91A0D2FC500E9913B /* logo_big.png in Resources */,
+				9BCAC7A51A0E0B3600282753 /* thumb.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
