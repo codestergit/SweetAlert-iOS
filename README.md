@@ -5,13 +5,9 @@ Beautiful Animated custom Alert View inspired from javascript library [SweetAler
 Written in Swift this AlertView can be used in Swift and Objective-C projects. SweetAlertView provides live experience to user actions.It can be used in place of `UIAlertView` and `UIAlertController`
 
 ###ScreenShots
-==============
-
 ![SweetAlert](https://github.com/codestergit/SweetAlert-iOS/blob/master/SweetAlertiOS.gif)
 
 ###Usage
-==============
-
 #####Basic message：
 ```swift
 SweetAlert().showAlert("Here's a message!")
@@ -56,7 +52,6 @@ SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: Aler
 ```
 
 ###Diffrent Animated Styles for Diffrent Purposes
-==============
 ```swift
 enum AlertStyle {
     case Success,Error,Warning,None
@@ -64,16 +59,13 @@ enum AlertStyle {
 }
 ```
 ###Installation
-==============
 Add the `SwiftAlert.swift` in to your project.
 
 ###Reuirements
-==============
 - Xcode 6.1+
 - iOS 7.0+
 
 ## License
-==============
 
     The MIT License (MIT)
 
