@@ -45,12 +45,13 @@ class SweetAlert: UIViewController {
         self.view.backgroundColor = UIColor(red:0, green:0, blue:0, alpha:kBakcgroundTansperancy)
         self.view.addSubview(contentView)
         
-        //retaining self can exist independently
+        //Retaining itself strongly so can exist without strong refrence
         strongSelf = self
 
     }
     
     func setupContentView() {
+        
         contentView.backgroundColor = UIColor(white: 1.0, alpha: 1.0)
         contentView.layer.cornerRadius = 5.0
         contentView.layer.masksToBounds = true
@@ -194,6 +195,8 @@ class SweetAlert: UIViewController {
         }) { (Bool) -> Void in
             self.view.removeFromSuperview()
             self.cleanUpAlert()
+            
+            //Releasing strong refrence of itself.
             self.strongSelf = nil
         }
     }
@@ -245,7 +248,7 @@ class SweetAlert: UIViewController {
     }
     
     func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String,buttonColor: UIColor,otherButtonTitle:
-        String?, otherButtonColor: UIColor?,action: ((isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
+        String?, otherButtonColor: UIColor?,action: ((isOtherButton: Bool) -> Void)? = nil) {
             userAction = action
             let window = UIApplication.sharedApplication().keyWindow?.subviews.first as UIView
             window.addSubview(view)
@@ -317,7 +320,6 @@ class SweetAlert: UIViewController {
             
                 animateAlert()
             }
-            return self
     }
 
     func animateAlert() {
@@ -362,7 +364,9 @@ class SweetAlert: UIViewController {
     }
 }
 
-// Mark : AnimatableViews
+// MARK: -
+
+// MARK: Animatable Views
 
 class AnimatableView: UIView {
     
@@ -378,7 +382,6 @@ class CancelAnimatedView: AnimatableView {
     
     override init() {
         super.init()
-//        self.setupLayers()
     }
     
     override required init(frame: CGRect) {
@@ -592,9 +595,7 @@ class SuccessAnimatedView: AnimatableView {
         var startAngle:CGFloat = CGFloat((60) / 180.0 * M_PI) //60
         var endAngle:CGFloat = CGFloat((200) / 180.0 * M_PI)  //190
         path.addArcWithCenter(CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0), radius: self.frame.size.width/2.0, startAngle: startAngle, endAngle: endAngle, clockwise: false)
-        print(path.currentPoint)
         path.addLineToPoint(CGPoint(x: 36.0 - 10.0 ,y: 60.0 - 10.0))
-        print(path.currentPoint)
         path.addLineToPoint(CGPoint(x: 85.0 - 20.0, y: 30.0 - 20.0))
         
         return path.CGPath
@@ -643,9 +644,9 @@ class SuccessAnimatedView: AnimatableView {
         strokeStart.fromValue = 0.0
         strokeStart.toValue = 0.68
         strokeStart.duration =  7.0*factor
-        strokeStart.beginTime =  CACurrentMediaTime() + 3.0*factor//(10.0-7.5)*factor
+        strokeStart.beginTime =  CACurrentMediaTime() + 3.0*factor
         strokeStart.fillMode = kCAFillModeBackwards
-        strokeStart.timingFunction = timing //CAMediaTimingFunction(controlPoints: 0.25, 0.5, 0.8, 1.22)
+        strokeStart.timingFunction = timing
         circleLayer.strokeStart = 0.68
         circleLayer.strokeEnd = 0.93
         self.circleLayer.addAnimation(strokeEnd, forKey: "strokeEnd")
