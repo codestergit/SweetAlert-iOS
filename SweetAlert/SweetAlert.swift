@@ -251,9 +251,10 @@ class SweetAlert: UIViewController {
     func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String,buttonColor: UIColor,otherButtonTitle:
         String?, otherButtonColor: UIColor?,action: ((isOtherButton: Bool) -> Void)? = nil) {
             userAction = action
-            let window = UIApplication.sharedApplication().keyWindow?.subviews.first as! UIView
-            window.addSubview(view)
-            view.frame = window.bounds
+            let window = UIApplication.sharedApplication().keyWindow
+            
+            window?.addSubview(view)
+            view.frame = window?.bounds ?? CGRect.zeroRect
             self.setupContentView()
             self.setupTitleLabel()
             self.setupSubtitleTextView()
