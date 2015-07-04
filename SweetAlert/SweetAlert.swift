@@ -21,7 +21,7 @@ public class SweetAlert: UIViewController {
     let KTopMargin: CGFloat = 20.0
     let kWidthMargin: CGFloat = 10.0
     let kAnimatedViewHeight: CGFloat = 70.0
-    let kMaxHeight: CGFloat = 500.0
+    let kMaxHeight: CGFloat = 300.0
     var kContentWidth: CGFloat = 300.0
     let kButtonHeight: CGFloat = 35.0
     var textViewHeight: CGFloat = 90.0
@@ -140,7 +140,19 @@ public class SweetAlert: UIViewController {
 
         }
         y += kHeightMargin + buttonRect[0].size.height + 10.0
-        
+        if y > kMaxHeight {
+            let diff = y - kMaxHeight
+            let sFrame = subTitleTextView.frame
+            subTitleTextView.frame = CGRect(x: sFrame.origin.x, y: sFrame.origin.y, width: sFrame.width, height: sFrame.height - diff)
+
+            for button in buttons {
+                let bFrame = button.frame
+                button.frame = CGRect(x: bFrame.origin.x, y: bFrame.origin.y - diff, width: bFrame.width, height: bFrame.height)
+            }
+
+            y = kMaxHeight
+        }
+
         contentView.frame = CGRect(x: (mainScreenBounds.size.width - kContentWidth) / 2.0, y: (mainScreenBounds.size.height - y) / 2.0, width: kContentWidth, height: y)
         contentView.clipsToBounds = true
     }
