@@ -13,7 +13,6 @@
 		9B4286EE1A0D2FA000E9913B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286ED1A0D2FA000E9913B /* Images.xcassets */; };
 		9B4286F31A0D2FAF00E9913B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286EF1A0D2FAF00E9913B /* LaunchScreen.xib */; };
 		9B4286F41A0D2FAF00E9913B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286F11A0D2FAF00E9913B /* Main.storyboard */; };
-		9B4286F81A0D2FC500E9913B /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286F51A0D2FC500E9913B /* Info.plist */; };
 		9B4286F91A0D2FC500E9913B /* logo_big.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286F61A0D2FC500E9913B /* logo_big.png */; };
 		9B4286FA1A0D2FC500E9913B /* SweetAlert.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286F71A0D2FC500E9913B /* SweetAlert.png */; };
 		9B4CD1311A06E9C400B65DE0 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B4CD1301A06E9C400B65DE0 /* QuartzCore.framework */; };
@@ -165,7 +164,6 @@
 			files = (
 				9B4286F31A0D2FAF00E9913B /* LaunchScreen.xib in Resources */,
 				9B4286FA1A0D2FC500E9913B /* SweetAlert.png in Resources */,
-				9B4286F81A0D2FC500E9913B /* Info.plist in Resources */,
 				9B4286EE1A0D2FA000E9913B /* Images.xcassets in Resources */,
 				9B4286F41A0D2FAF00E9913B /* Main.storyboard in Resources */,
 				9B4286F91A0D2FC500E9913B /* logo_big.png in Resources */,
