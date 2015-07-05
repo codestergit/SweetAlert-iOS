@@ -62,7 +62,7 @@ enum AlertStyle {
 Add the `SwiftAlert.swift` in to your project.
 
 ###Reuirements
-- Xcode 6.1+
+- Xcode 7.0+
 - iOS 7.0+
 
 ## License
