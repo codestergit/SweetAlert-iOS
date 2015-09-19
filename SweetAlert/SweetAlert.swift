@@ -13,6 +13,7 @@ import QuartzCore
 public enum AlertStyle {
     case Success,Error,Warning,None
     case CustomImag(imageFile:String)
+    case ActivityIndicator
 }
 
 public class SweetAlert: UIViewController {
@@ -32,10 +33,11 @@ public class SweetAlert: UIViewController {
     var buttons: [UIButton] = []
     var animatedView: AnimatableView?
     var imageView:UIImageView?
+    var activityIndicatorView: UIActivityIndicatorView?
     var subTitleTextView = UITextView()
     var userAction:((isOtherButton: Bool) -> Void)? = nil
     let kFont = "Helvetica"
-
+    
     init() {
         super.init(nibName: nil, bundle: nil)
         self.view.frame = UIScreen.mainScreen().bounds
@@ -46,7 +48,7 @@ public class SweetAlert: UIViewController {
         //Retaining itself strongly so can exist without strong refrence
         strongSelf = self
     }
-
+    
     required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -62,7 +64,7 @@ public class SweetAlert: UIViewController {
         contentView.layer.borderColor = UIColor.colorFromRGB(0xCCCCCC).CGColor
         view.addSubview(contentView)
     }
-
+    
     private func setupTitleLabel() {
         titleLabel.text = ""
         titleLabel.numberOfLines = 1
@@ -87,7 +89,7 @@ public class SweetAlert: UIViewController {
         let width: CGFloat = kContentWidth - (kWidthMargin*2)
         
         if animatedView != nil {
-             animatedView!.frame = CGRect(x: (kContentWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
+            animatedView!.frame = CGRect(x: (kContentWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
             contentView.addSubview(animatedView!)
             y += kAnimatedViewHeight + kHeightMargin
         }
@@ -96,8 +98,13 @@ public class SweetAlert: UIViewController {
             imageView!.frame = CGRect(x: (kContentWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
             contentView.addSubview(imageView!)
             y += imageView!.frame.size.height + kHeightMargin
+            
+        } else if activityIndicatorView != nil {
+            activityIndicatorView!.frame = CGRect(x: (kContentWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
+            contentView.addSubview(activityIndicatorView!)
+            y += activityIndicatorView!.frame.size.height + kHeightMargin
         }
-
+        
         // Title
         if self.titleLabel.text != nil {
             titleLabel.frame = CGRect(x: x, y: y, width: width, height: kTitleHeight)
@@ -126,33 +133,37 @@ public class SweetAlert: UIViewController {
             totalWidth = buttonRect[0].size.width + buttonRect[1].size.width + kWidthMargin + 40.0
         }
         else{
-            totalWidth = buttonRect[0].size.width + 20.0
+            totalWidth = 300
         }
         y += kHeightMargin
         var buttonX = (kContentWidth - totalWidth ) / 2.0
         for var i = 0; i <  buttons.count; i++ {
             
-                buttons[i].frame = CGRect(x: buttonX, y: y, width: buttonRect[i].size.width + 20.0, height: buttonRect[i].size.height + 10.0)
-                buttonX = buttons[i].frame.origin.x + kWidthMargin + buttonRect[i].size.width + 20.0
-                buttons[i].layer.cornerRadius = 5.0
-                self.contentView.addSubview(buttons[i])
-                buttons[i].addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
-
+            buttons[i].frame = CGRect(x: buttonX, y: y, width: buttonRect[i].size.width + 20.0, height: buttonRect[i].size.height + 10.0)
+            buttonX = buttons[i].frame.origin.x + kWidthMargin + buttonRect[i].size.width + 20.0
+            buttons[i].layer.cornerRadius = 5.0
+            self.contentView.addSubview(buttons[i])
+            buttons[i].addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
+            
         }
-        y += kHeightMargin + buttonRect[0].size.height + 10.0
+        
+        if buttons.count != 0 {
+            y += kHeightMargin + buttonRect[0].size.height + 10.0
+        }
+        
         if y > kMaxHeight {
             let diff = y - kMaxHeight
             let sFrame = subTitleTextView.frame
             subTitleTextView.frame = CGRect(x: sFrame.origin.x, y: sFrame.origin.y, width: sFrame.width, height: sFrame.height - diff)
-
+            
             for button in buttons {
                 let bFrame = button.frame
                 button.frame = CGRect(x: bFrame.origin.x, y: bFrame.origin.y - diff, width: bFrame.width, height: bFrame.height)
             }
-
+            
             y = kMaxHeight
         }
-
+        
         contentView.frame = CGRect(x: (mainScreenBounds.size.width - kContentWidth) / 2.0, y: (mainScreenBounds.size.height - y) / 2.0, width: kContentWidth, height: y)
         contentView.clipsToBounds = true
     }
@@ -160,7 +171,20 @@ public class SweetAlert: UIViewController {
     public func pressed(sender: UIButton!) {
         self.closeAlert(sender.tag)
     }
-
+    
+    public func dismissTimed(dismissTime: NSTimeInterval) {
+        
+        let seconds = dismissTime
+        let delay = seconds * Double(NSEC_PER_SEC)  // nanoseconds per seconds
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(delay))
+        
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            
+            self.closeAlert(nil)
+            
+        })
+    }
+    
     public override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         var sz = UIScreen.mainScreen().bounds.size
@@ -175,28 +199,29 @@ public class SweetAlert: UIViewController {
         }
         self.resizeAndRelayout()
     }
-
-    func closeAlert(buttonIndex:Int){
+    
+    func closeAlert(buttonIndex:Int?) {
+        
         if userAction !=  nil {
             let isOtherButton = buttonIndex == 0 ? true: false
             SweetAlertContext.shouldNotAnimate = true
             userAction!(isOtherButton: isOtherButton)
             SweetAlertContext.shouldNotAnimate = false
         }
-
+        
         UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
             self.view.alpha = 0.0
-        }) { (Bool) -> Void in
-            self.view.removeFromSuperview()
-            self.cleanUpAlert()
-            
-            //Releasing strong refrence of itself.
-            self.strongSelf = nil
+            }) { (Bool) -> Void in
+                self.view.removeFromSuperview()
+                self.cleanUpAlert()
+                
+                //Releasing strong refrence of itself.
+                self.strongSelf = nil
         }
     }
-
-    func cleanUpAlert() {
     
+    func cleanUpAlert() {
+        
         if self.animatedView != nil {
             self.animatedView!.removeFromSuperview()
             self.animatedView = nil
@@ -206,48 +231,55 @@ public class SweetAlert: UIViewController {
     }
     
     public func showAlert(title: String) -> SweetAlert {
-        self.showAlert(title, subTitle: nil, style: .None)
+        self.showAlert(title, subTitle: nil, style: .None, dismissTime: 1.0)
         return self
     }
     
     public func showAlert(title: String, subTitle: String?, style: AlertStyle) -> SweetAlert {
-        self.showAlert(title, subTitle: subTitle, style: style, buttonTitle: "OK")
+        self.showAlert(title, subTitle: subTitle, style: style, dismissTime: 1.0, buttonTitle: nil)
         return self
-
+        
     }
-
-    public func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String, action: ((isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
-        self.showAlert(title, subTitle: subTitle, style: style, buttonTitle: buttonTitle,buttonColor: UIColor.colorFromRGB(0xAEDEF4))
+    
+    public func showAlert(title: String, subTitle: String?, style: AlertStyle, dismissTime: NSTimeInterval?) -> SweetAlert {
+        self.showAlert(title, subTitle: subTitle, style: style, dismissTime: dismissTime, buttonTitle: nil)
+        return self
+        
+    }
+    
+    public func showAlert(title: String, subTitle: String?, style: AlertStyle, dismissTime: NSTimeInterval?, buttonTitle: String?, action: ((isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
+        self.showAlert(title, subTitle: subTitle, style: style, dismissTime: dismissTime, buttonTitle: buttonTitle,buttonColor: UIColor.colorFromRGB(0xAEDEF4))
         userAction = action
         return self
     }
     
-    public func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String,buttonColor: UIColor,action: ((isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
-        self.showAlert(title, subTitle: subTitle, style: style, buttonTitle: buttonTitle,buttonColor: buttonColor,otherButtonTitle:
+    public func showAlert(title: String, subTitle: String?, style: AlertStyle, dismissTime: NSTimeInterval?, buttonTitle: String?,buttonColor: UIColor?,action: ((isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
+        self.showAlert(title, subTitle: subTitle, style: style, dismissTime: dismissTime, buttonTitle: buttonTitle,buttonColor: buttonColor,otherButtonTitle:
             nil)
         userAction = action
         return self
     }
-
-    public func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String,buttonColor: UIColor,otherButtonTitle:
+    
+    public func showAlert(title: String, subTitle: String?, style: AlertStyle, dismissTime: NSTimeInterval?, buttonTitle: String?,buttonColor: UIColor?,otherButtonTitle:
         String?, action: ((isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
-            self.showAlert(title, subTitle: subTitle, style: style, buttonTitle: buttonTitle,buttonColor: buttonColor,otherButtonTitle:
+            self.showAlert(title, subTitle: subTitle, style: style, dismissTime: dismissTime, buttonTitle: buttonTitle,buttonColor: buttonColor,otherButtonTitle:
                 otherButtonTitle,otherButtonColor: UIColor.redColor())
             userAction = action
             return self
     }
     
-    public func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String,buttonColor: UIColor,otherButtonTitle:
+    public func showAlert(title: String, subTitle: String?, style: AlertStyle, dismissTime: NSTimeInterval?, buttonTitle: String?,buttonColor: UIColor?,otherButtonTitle:
         String?, otherButtonColor: UIColor?,action: ((isOtherButton: Bool) -> Void)? = nil) {
+            
             userAction = action
-            let window: UIWindow = UIApplication.sharedApplication().keyWindow! 
+            let window: UIWindow = UIApplication.sharedApplication().keyWindow!
             window.addSubview(view)
             window.bringSubviewToFront(view)
             view.frame = window.bounds
             self.setupContentView()
             self.setupTitleLabel()
             self.setupSubtitleTextView()
- 
+            
             switch style {
             case .Success:
                 self.animatedView = SuccessAnimatedView()
@@ -262,16 +294,25 @@ public class SweetAlert: UIViewController {
                 if let image = UIImage(named: imageFile) {
                     self.imageView = UIImageView(image: image)
                 }
+                
+            case .ActivityIndicator:
+                self.activityIndicatorView = UIActivityIndicatorView()
+                self.activityIndicatorView?.activityIndicatorViewStyle = .WhiteLarge
+                self.activityIndicatorView?.color = UIColor.darkGrayColor()
+                self.activityIndicatorView?.transform = CGAffineTransformMakeScale(2.0, 2.0)
+                self.activityIndicatorView?.startAnimating()
+                
             case .None:
                 self.animatedView = nil
             }
-
+            
             self.titleLabel.text = title
             if subTitle != nil {
                 self.subTitleTextView.text = subTitle
             }
+            
             buttons = []
-            if buttonTitle.isEmpty == false {
+            if buttonTitle?.isEmpty == false {
                 let button: UIButton = UIButton(type: UIButtonType.Custom)
                 button.setTitle(buttonTitle, forState: UIControlState.Normal)
                 button.backgroundColor = buttonColor
@@ -280,7 +321,7 @@ public class SweetAlert: UIViewController {
                 buttons.append(button)
             }
             
-            if otherButtonTitle != nil && otherButtonTitle!.isEmpty == false {
+            if otherButtonTitle != nil && otherButtonTitle?.isEmpty == false {
                 let button: UIButton = UIButton(type: UIButtonType.Custom)
                 button.setTitle(otherButtonTitle, forState: UIControlState.Normal)
                 button.backgroundColor = otherButtonColor
@@ -288,7 +329,12 @@ public class SweetAlert: UIViewController {
                 button.tag = 1
                 buttons.append(button)
             }
-
+            
+            if dismissTime != nil {
+                
+                dismissTimed(dismissTime!)
+            }
+            
             resizeAndRelayout()
             if SweetAlertContext.shouldNotAnimate == true {
                 //Do not animate Alert
@@ -300,14 +346,14 @@ public class SweetAlert: UIViewController {
                 animateAlert()
             }
     }
-
+    
     func animateAlert() {
-
+        
         view.alpha = 0;
         UIView.animateWithDuration(0.1, animations: { () -> Void in
             self.view.alpha = 1.0;
         })
-
+        
         let previousTransform = self.contentView.transform
         self.contentView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 0.0);
         UIView.animateWithDuration(0.2, animations: { () -> Void in
@@ -321,9 +367,9 @@ public class SweetAlert: UIViewController {
                             if self.animatedView != nil {
                                 self.animatedView!.animate()
                             }
-
+                            
                             }) { (Bool) -> Void in
-
+                                
                                 self.contentView.transform = previousTransform
                         }
                 }
@@ -341,7 +387,7 @@ public class SweetAlert: UIViewController {
 
 class AnimatableView: UIView {
     func animate(){
-        print("Should overide by subclasss", appendNewline: false)
+        print("Should overide by subclasss", terminator: "")
     }
 }
 
@@ -349,7 +395,7 @@ class CancelAnimatedView: AnimatableView {
     
     var circleLayer = CAShapeLayer()
     var crossPathLayer = CAShapeLayer()
-
+    
     override required init(frame: CGRect) {
         super.init(frame: frame)
         setupLayers()
@@ -368,14 +414,14 @@ class CancelAnimatedView: AnimatableView {
         fatalError("init(coder:) has not been implemented")
     }
     
-     private var outlineCircle: CGPath  {
+    private var outlineCircle: CGPath  {
         let path = UIBezierPath()
         let startAngle: CGFloat = CGFloat((0) / 180.0 * M_PI)  //0
         let endAngle: CGFloat = CGFloat((360) / 180.0 * M_PI)   //360
         path.addArcWithCenter(CGPointMake(self.frame.size.width/2.0, self.frame.size.width/2.0), radius: self.frame.size.width/2.0, startAngle: startAngle, endAngle: endAngle, clockwise: false)
         
         return path.CGPath
-        }
+    }
     
     private var crossPath: CGPath  {
         let path = UIBezierPath()
@@ -406,7 +452,7 @@ class CancelAnimatedView: AnimatableView {
         crossPathLayer.frame = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         crossPathLayer.position = CGPoint(x: self.frame.size.width/2.0, y: self.frame.size.height/2.0)
         self.layer.addSublayer(crossPathLayer)
-
+        
     }
     
     override func animate() {
@@ -417,7 +463,7 @@ class CancelAnimatedView: AnimatableView {
         var t2 = CATransform3DIdentity;
         t2.m34 = 1.0 / -500.0;
         t2 = CATransform3DRotate(t2, CGFloat(-M_PI), 1, 0, 0);
-
+        
         let animation = CABasicAnimation(keyPath: "transform")
         let time = 0.3
         animation.duration = time;
@@ -430,7 +476,7 @@ class CancelAnimatedView: AnimatableView {
         
         var scale = CATransform3DIdentity;
         scale = CATransform3DScale(scale, 0.3, 0.3, 0)
-
+        
         
         let crossAnimation = CABasicAnimation(keyPath: "transform")
         crossAnimation.duration = 0.3;
@@ -529,7 +575,7 @@ class SuccessAnimatedView: AnimatableView {
     override func layoutSubviews() {
         setupLayers()
     }
-
+    
     
     var outlineCircle: CGPath {
         let path = UIBezierPath()
