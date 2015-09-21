@@ -23,7 +23,7 @@ public class SweetAlert: UIViewController {
     let kWidthMargin: CGFloat = 10.0
     let kAnimatedViewHeight: CGFloat = 70.0
     let kMaxHeight: CGFloat = 300.0
-    var kContentWidth: CGFloat = 300.0
+    var kMaxWidth: CGFloat = 300.0
     let kButtonHeight: CGFloat = 35.0
     var textViewHeight: CGFloat = 90.0
     let kTitleHeight:CGFloat = 30.0
@@ -86,28 +86,28 @@ public class SweetAlert: UIViewController {
         self.view.frame.size = mainScreenBounds.size
         let x: CGFloat = kWidthMargin
         var y: CGFloat = KTopMargin
-        let width: CGFloat = kContentWidth - (kWidthMargin*2)
+        let kContentWidth: CGFloat = kMaxWidth - (kWidthMargin*2)
         
         if animatedView != nil {
-            animatedView!.frame = CGRect(x: (kContentWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
+            animatedView!.frame = CGRect(x: (kMaxWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
             contentView.addSubview(animatedView!)
             y += kAnimatedViewHeight + kHeightMargin
         }
         
         if imageView != nil {
-            imageView!.frame = CGRect(x: (kContentWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
+            imageView!.frame = CGRect(x: (kMaxWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
             contentView.addSubview(imageView!)
             y += imageView!.frame.size.height + kHeightMargin
             
         } else if activityIndicatorView != nil {
-            activityIndicatorView!.frame = CGRect(x: (kContentWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
+            activityIndicatorView!.frame = CGRect(x: (kMaxWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
             contentView.addSubview(activityIndicatorView!)
             y += activityIndicatorView!.frame.size.height + kHeightMargin
         }
         
         // Title
         if self.titleLabel.text != nil {
-            titleLabel.frame = CGRect(x: x, y: y, width: width, height: kTitleHeight)
+            titleLabel.frame = CGRect(x: x, y: y, width: kContentWidth, height: kTitleHeight)
             contentView.addSubview(titleLabel)
             y += kTitleHeight + kHeightMargin
         }
@@ -115,32 +115,27 @@ public class SweetAlert: UIViewController {
         // Subtitle
         if self.subTitleTextView.text.isEmpty == false {
             let subtitleString = subTitleTextView.text! as NSString
-            let rect = subtitleString.boundingRectWithSize(CGSize(width: width, height: 0.0), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:subTitleTextView.font!], context: nil)
+            let rect = subtitleString.boundingRectWithSize(CGSize(width: kContentWidth, height: 0.0), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:subTitleTextView.font!], context: nil)
             textViewHeight = ceil(rect.size.height) + 10.0
-            subTitleTextView.frame = CGRect(x: x, y: y, width: width, height: textViewHeight)
+            subTitleTextView.frame = CGRect(x: x, y: y, width: kContentWidth, height: textViewHeight)
             contentView.addSubview(subTitleTextView)
             y += textViewHeight + kHeightMargin
         }
         
-        var buttonRect:[CGRect] = []
-        for button in buttons {
-            let string = button.titleForState(UIControlState.Normal)! as NSString
-            buttonRect.append(string.boundingRectWithSize(CGSize(width: width, height:0.0), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes:[NSFontAttributeName:button.titleLabel!.font], context:nil))
-        }
-        
-        var totalWidth: CGFloat = 0.0
+        var buttonWidth: CGFloat = 0.0
         if buttons.count == 2 {
-            totalWidth = buttonRect[0].size.width + buttonRect[1].size.width + kWidthMargin + 40.0
+            buttonWidth = (kContentWidth / CGFloat(buttons.count)) - kWidthMargin / 2.0
         }
         else{
-            totalWidth = 300
+            buttonWidth = kContentWidth
         }
+        
         y += kHeightMargin
-        var buttonX = (kContentWidth - totalWidth ) / 2.0
+        var buttonX = (kMaxWidth - kContentWidth) / 2.0
         for var i = 0; i <  buttons.count; i++ {
             
-            buttons[i].frame = CGRect(x: buttonX, y: y, width: buttonRect[i].size.width + 20.0, height: buttonRect[i].size.height + 10.0)
-            buttonX = buttons[i].frame.origin.x + kWidthMargin + buttonRect[i].size.width + 20.0
+            buttons[i].frame = CGRect(x: buttonX, y: y, width: buttonWidth, height: kButtonHeight)
+            buttonX = buttonX + buttons[i].bounds.size.width + kWidthMargin
             buttons[i].layer.cornerRadius = 5.0
             self.contentView.addSubview(buttons[i])
             buttons[i].addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -148,7 +143,7 @@ public class SweetAlert: UIViewController {
         }
         
         if buttons.count != 0 {
-            y += kHeightMargin + buttonRect[0].size.height + 10.0
+            y += kHeightMargin + buttons[0].frame.size.height + 10.0
         }
         
         if y > kMaxHeight {
@@ -164,7 +159,7 @@ public class SweetAlert: UIViewController {
             y = kMaxHeight
         }
         
-        contentView.frame = CGRect(x: (mainScreenBounds.size.width - kContentWidth) / 2.0, y: (mainScreenBounds.size.height - y) / 2.0, width: kContentWidth, height: y)
+        contentView.frame = CGRect(x: (mainScreenBounds.size.width - kMaxWidth) / 2.0, y: (mainScreenBounds.size.height - y) / 2.0, width: kMaxWidth, height: y)
         contentView.clipsToBounds = true
     }
     
@@ -387,7 +382,7 @@ public class SweetAlert: UIViewController {
 
 class AnimatableView: UIView {
     func animate(){
-        print("Should overide by subclasss", terminator: "")
+        print("Should overide by subclasss", terminator: " ")
     }
 }
 
