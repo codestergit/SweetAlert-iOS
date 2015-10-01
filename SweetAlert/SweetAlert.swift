@@ -108,7 +108,7 @@ public class SweetAlert: UIViewController {
             
         } else {
             
-            y += kHeightMargin
+            y += KTopMargin
         }
         
         if animatedView != nil {
@@ -132,7 +132,7 @@ public class SweetAlert: UIViewController {
         if self.titleLabel.text != nil {
             titleLabel.frame = CGRect(x: x, y: y, width: kContentWidth, height: kTitleHeight)
             contentView.addSubview(titleLabel)
-            y += kTitleHeight + (kHeightMargin / 2)
+            y += kTitleHeight 
 
         }
         
