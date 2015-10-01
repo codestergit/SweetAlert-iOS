@@ -21,22 +21,25 @@ public class SweetAlert: UIViewController {
     let kHeightMargin: CGFloat = 10.0
     let KTopMargin: CGFloat = 20.0
     let kWidthMargin: CGFloat = 10.0
+    let kDismissViewHeight: CGFloat = 50.0
     let kAnimatedViewHeight: CGFloat = 70.0
-    let kMaxHeight: CGFloat = 300.0
-    var kMaxWidth: CGFloat = 300.0
+    let kMaxHeight: CGFloat = 320.0
+    var kMaxWidth: CGFloat = 320.0
     let kButtonHeight: CGFloat = 35.0
-    var textViewHeight: CGFloat = 90.0
+    var textViewHeight: CGFloat = 100.0
     let kTitleHeight:CGFloat = 30.0
     var strongSelf:SweetAlert?
     var contentView = UIView()
     var titleLabel: UILabel = UILabel()
     var buttons: [UIButton] = []
+    var dismissView: UIView?
+    var dismissButton: UIButton!
     var animatedView: AnimatableView?
     var imageView:UIImageView?
     var activityIndicatorView: UIActivityIndicatorView?
     var subTitleTextView = UITextView()
     var userAction:((isOtherButton: Bool) -> Void)? = nil
-    let kFont = "Helvetica"
+    let kFont = "HelveticaNeue"
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -51,6 +54,14 @@ public class SweetAlert: UIViewController {
     
     required public init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupDismissButton() {
+        
+        dismissButton = UIButton(type: UIButtonType.Custom)
+        dismissButton.setImage(UIImage(named: "stop_black"), forState: UIControlState.Normal)
+        dismissButton.addTarget(self, action: "dismissButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        dismissView!.addSubview(dismissButton)
     }
     
     private func setupContentView() {
@@ -85,8 +96,20 @@ public class SweetAlert: UIViewController {
         let mainScreenBounds = UIScreen.mainScreen().bounds
         self.view.frame.size = mainScreenBounds.size
         let x: CGFloat = kWidthMargin
-        var y: CGFloat = KTopMargin
+        var y: CGFloat = 0.0
         let kContentWidth: CGFloat = kMaxWidth - (kWidthMargin*2)
+        
+        if dismissView != nil {
+
+            dismissView!.frame = CGRect(x: x, y: y, width: kContentWidth, height: kDismissViewHeight)
+            dismissButton.frame = CGRect(x: dismissView!.frame.width - 50.0, y: 0.0, width: 50, height: 50)
+            contentView.addSubview(dismissView!)
+            y += kDismissViewHeight
+            
+        } else {
+            
+            y += kHeightMargin
+        }
         
         if animatedView != nil {
             animatedView!.frame = CGRect(x: (kMaxWidth - kAnimatedViewHeight) / 2.0, y: y, width: kAnimatedViewHeight, height: kAnimatedViewHeight)
@@ -109,15 +132,17 @@ public class SweetAlert: UIViewController {
         if self.titleLabel.text != nil {
             titleLabel.frame = CGRect(x: x, y: y, width: kContentWidth, height: kTitleHeight)
             contentView.addSubview(titleLabel)
-            y += kTitleHeight + kHeightMargin
+            y += kTitleHeight + (kHeightMargin / 2)
+
         }
         
         // Subtitle
         if self.subTitleTextView.text.isEmpty == false {
             let subtitleString = subTitleTextView.text! as NSString
             let rect = subtitleString.boundingRectWithSize(CGSize(width: kContentWidth, height: 0.0), options: NSStringDrawingOptions.UsesLineFragmentOrigin, attributes: [NSFontAttributeName:subTitleTextView.font!], context: nil)
-            textViewHeight = ceil(rect.size.height) + 10.0
+            textViewHeight = ceil(rect.size.height) + 20.0
             subTitleTextView.frame = CGRect(x: x, y: y, width: kContentWidth, height: textViewHeight)
+            subTitleTextView.scrollEnabled = false
             contentView.addSubview(subTitleTextView)
             y += textViewHeight + kHeightMargin
         }
@@ -167,6 +192,10 @@ public class SweetAlert: UIViewController {
         self.closeAlert(sender.tag)
     }
     
+    public func dismissButtonPressed(sender: UIButton!) {
+        self.closeAlertDismissButton()
+    }
+    
     public func dismissTimed(dismissTime: NSTimeInterval) {
         
         let seconds = dismissTime
@@ -203,6 +232,19 @@ public class SweetAlert: UIViewController {
             userAction!(isOtherButton: isOtherButton)
             SweetAlertContext.shouldNotAnimate = false
         }
+        
+        UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
+            self.view.alpha = 0.0
+            }) { (Bool) -> Void in
+                self.view.removeFromSuperview()
+                self.cleanUpAlert()
+                
+                //Releasing strong refrence of itself.
+                self.strongSelf = nil
+        }
+    }
+    
+    func closeAlertDismissButton() {
         
         UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
             self.view.alpha = 0.0
@@ -271,6 +313,12 @@ public class SweetAlert: UIViewController {
             window.addSubview(view)
             window.bringSubviewToFront(view)
             view.frame = window.bounds
+            
+            if dismissTime == nil {
+                dismissView = UIView()
+                self.setupDismissButton()
+            }
+            
             self.setupContentView()
             self.setupTitleLabel()
             self.setupSubtitleTextView()
