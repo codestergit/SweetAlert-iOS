@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		784864ED6A0B7AF68C8DE1D8 /* SweetAlert.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 784869A188ADBAB6A90C84DF /* SweetAlert.podspec */; };
 		9B4286E81A0D2F5C00E9913B /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4286E71A0D2F5C00E9913B /* SweetAlert.swift */; };
 		9B4286EB1A0D2F7700E9913B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4286E91A0D2F7700E9913B /* AppDelegate.swift */; };
 		9B4286EC1A0D2F7700E9913B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4286EA1A0D2F7700E9913B /* ViewController.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		784869A188ADBAB6A90C84DF /* SweetAlert.podspec */ = {isa = PBXFileReference; lastKnownFileType = file.podspec; path = SweetAlert.podspec; sourceTree = "<group>"; };
 		9B4286E71A0D2F5C00E9913B /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SweetAlert.swift; path = SweetAlert/SweetAlert.swift; sourceTree = SOURCE_ROOT; };
 		9B4286E91A0D2F7700E9913B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SweetAlert/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		9B4286EA1A0D2F7700E9913B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = SweetAlert/ViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -59,6 +61,7 @@
 			children = (
 				9B4CD10A1A06E55200B65DE0 /* SweetAlert */,
 				9B4CD1091A06E55200B65DE0 /* Products */,
+				784869A188ADBAB6A90C84DF /* SweetAlert.podspec */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +171,7 @@
 				9B4286F41A0D2FAF00E9913B /* Main.storyboard in Resources */,
 				9B4286F91A0D2FC500E9913B /* logo_big.png in Resources */,
 				9BCAC7A51A0E0B3600282753 /* thumb.jpg in Resources */,
+				784864ED6A0B7AF68C8DE1D8 /* SweetAlert.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

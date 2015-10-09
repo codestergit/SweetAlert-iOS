@@ -341,7 +341,7 @@ public class SweetAlert: UIViewController {
 
 class AnimatableView: UIView {
     func animate(){
-        print("Should overide by subclasss", appendNewline: false)
+        print("Should overide by subclasss", terminator: "")
     }
 }
 
