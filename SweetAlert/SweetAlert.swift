@@ -310,24 +310,13 @@ public class SweetAlert: UIViewController {
 
         let previousTransform = self.contentView.transform
         self.contentView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 0.0);
-        UIView.animateWithDuration(0.2, animations: { () -> Void in
-            self.contentView.layer.transform = CATransform3DMakeScale(1.1, 1.1, 0.0);
-            }) { (Bool) -> Void in
-                UIView.animateWithDuration(0.1, animations: { () -> Void in
-                    self.contentView.layer.transform = CATransform3DMakeScale(0.9, 0.9, 0.0);
-                    }) { (Bool) -> Void in
-                        UIView.animateWithDuration(0.1, animations: { () -> Void in
-                            self.contentView.layer.transform = CATransform3DMakeScale(1.0, 1.0, 0.0);
-                            if self.animatedView != nil {
-                                self.animatedView!.animate()
-                            }
-
-                            }) { (Bool) -> Void in
-
-                                self.contentView.transform = previousTransform
-                        }
-                }
-        }
+        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: nil, animations: {
+            
+            self.contentView.transform  = previousTransform
+            
+            }, completion: { value in
+                // A completion can be added but is not necessary
+        })
     }
     
     private struct SweetAlertContext {
