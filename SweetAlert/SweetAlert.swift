@@ -205,36 +205,30 @@ public class SweetAlert: UIViewController {
         self.contentView = UIView()
     }
     
-    public func showAlert(title: String) -> SweetAlert {
+    public func showAlert(title: String) {
         self.showAlert(title, subTitle: nil, style: .None)
-        return self
     }
     
-    public func showAlert(title: String, subTitle: String?, style: AlertStyle) -> SweetAlert {
+    public func showAlert(title: String, subTitle: String?, style: AlertStyle) {
         self.showAlert(title, subTitle: subTitle, style: style, buttonTitle: "OK")
-        return self
-
     }
 
-    public func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String, action: ((isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
+    public func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String, action: ((isOtherButton: Bool) -> Void)? = nil) {
         self.showAlert(title, subTitle: subTitle, style: style, buttonTitle: buttonTitle,buttonColor: UIColor.colorFromRGB(0xAEDEF4))
         userAction = action
-        return self
     }
     
-    public func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String,buttonColor: UIColor,action: ((isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
+    public func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String,buttonColor: UIColor,action: ((isOtherButton: Bool) -> Void)? = nil) {
         self.showAlert(title, subTitle: subTitle, style: style, buttonTitle: buttonTitle,buttonColor: buttonColor,otherButtonTitle:
             nil)
         userAction = action
-        return self
     }
 
     public func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String,buttonColor: UIColor,otherButtonTitle:
-        String?, action: ((isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
+        String?, action: ((isOtherButton: Bool) -> Void)? = nil) {
             self.showAlert(title, subTitle: subTitle, style: style, buttonTitle: buttonTitle,buttonColor: buttonColor,otherButtonTitle:
                 otherButtonTitle,otherButtonColor: UIColor.redColor())
             userAction = action
-            return self
     }
     
     public func showAlert(title: String, subTitle: String?, style: AlertStyle,buttonTitle: String,buttonColor: UIColor,otherButtonTitle:
