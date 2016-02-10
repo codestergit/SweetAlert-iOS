@@ -54,7 +54,7 @@ SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: Aler
 ###Diffrent Animated Styles for Diffrent Purposes
 ```swift
 enum AlertStyle {
-    case Success,Error,Warning,None
+    case Busy,Success,Error,Warning,None
     case CustomImag(imageFile:String)
 }
 ```
