@@ -509,6 +509,89 @@ class InfoAnimatedView: AnimatableView {
     }
 }
 
+class BusyAnimatedView: AnimatableView {
+    
+    var circleLayer = CAShapeLayer()
+    var outlineLayer = CAShapeLayer()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupLayers()
+        circleLayer.strokeStart = 0.0
+        circleLayer.strokeEnd = 0.0
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        setupLayers()
+    }
+    
+    
+    var outlineCircle: CGPath {
+        let path = UIBezierPath()
+        let startAngle: CGFloat = CGFloat((0) / 180.0 * M_PI)  //0
+        let endAngle: CGFloat = CGFloat((360) / 180.0 * M_PI)   //360
+        path.addArcWithCenter(CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0), radius: self.frame.size.width/2.0, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+        return path.CGPath
+    }
+    
+    var path: CGPath {
+        let path = UIBezierPath()
+        let startAngle: CGFloat = CGFloat((0) / 180.0 * M_PI)  //0
+        let endAngle: CGFloat = CGFloat((360) / 180.0 * M_PI)   //60
+        path.addArcWithCenter(CGPointMake(0, 0), radius: self.frame.size.width/2.0, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+        return path.CGPath
+    }
+    
+    
+    func setupLayers() {
+        
+        outlineLayer.position = CGPointMake(0, 0);
+        outlineLayer.path = outlineCircle
+        outlineLayer.fillColor = UIColor.clearColor().CGColor;
+        outlineLayer.strokeColor = UIColor(red: 150.0/255.0, green: 216.0/255.0, blue: 115.0/255.0, alpha: 1.0).CGColor;
+        outlineLayer.lineCap = kCALineCapRound
+        outlineLayer.lineWidth = 4;
+        outlineLayer.opacity = 0.1
+        self.layer.addSublayer(outlineLayer)
+        
+        circleLayer.position = CGPointMake(self.frame.size.width/2.0, self.frame.size.height/2.0)
+        circleLayer.path = path
+        circleLayer.fillColor = UIColor.clearColor().CGColor;
+        circleLayer.strokeColor = UIColor(red: 150.0/255.0, green: 216.0/255.0, blue: 115.0/255.0, alpha: 1.0).CGColor;
+        circleLayer.lineCap = kCALineCapRound
+        circleLayer.lineWidth = 4;
+        circleLayer.actions = [
+            "strokeStart": NSNull(),
+            "strokeEnd": NSNull(),
+            "transform": NSNull()
+        ]
+        self.layer.addSublayer(circleLayer)
+    }
+    
+    override func animate() {
+        let duration:Double = 1;
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        //rotateAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        rotateAnimation.fromValue = 0.0
+        rotateAnimation.repeatCount = Float.infinity
+        rotateAnimation.toValue = CGFloat(M_PI * 2.0)
+        rotateAnimation.duration = duration
+        circleLayer.strokeStart = 0.68
+        circleLayer.strokeEnd = 0.93
+        
+        self.circleLayer.addAnimation(rotateAnimation, forKey: nil)
+    }
+    
+    override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
+        print("animation finished");
+    }
+    
+}
+
 
 class SuccessAnimatedView: AnimatableView {
     
