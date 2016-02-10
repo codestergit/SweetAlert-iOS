@@ -11,7 +11,7 @@ import UIKit
 import QuartzCore
 
 public enum AlertStyle {
-    case Success,Error,Warning,None
+    case Busy,Success,Error,Warning,None
     case CustomImag(imageFile:String)
 }
 
@@ -249,6 +249,9 @@ public class SweetAlert: UIViewController {
             self.setupSubtitleTextView()
  
             switch style {
+            case .Busy:
+                self.animatedView = BusyAnimatedView()
+                
             case .Success:
                 self.animatedView = SuccessAnimatedView()
                 
