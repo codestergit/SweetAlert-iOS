@@ -20,7 +20,7 @@ SweetAlert().showAlert("Here's a message!", subTitle: "It's pretty, isn't it?", 
 ```swift
 SweetAlert().showAlert("Good job!", subTitle: "You clicked the button!", style: AlertStyle.Success)
 ```
-#####Warning message and Chained Animated Success messge on completion:
+#####Warning message and Chained Animated Success message on completion:
 ```swift
 SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.Warning, buttonTitle:"Cancel", buttonColor:UIColorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
@@ -32,6 +32,14 @@ SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently del
             }
 }
 ```
+#####Now with even more buttons:
+```swift
+        	SweetAlert().showAlert("Are you sure?", subTitle: "You files will permanently delete!", style: AlertStyle.Warning, buttonTitles: ["OK", "All", "Cancel", "Exit"], buttonColors: [UIColor.greenColor(), nil, UIColor.grayColor(), UIColor.redColor()]) { (selectedButton) -> Void in
+            	print ("Selected button index: \(selectedButton)")
+            	// starting from index zero
+        	}
+```
+
 
 #####Chained Alerts on actions with custom button colors:
 ```swift
