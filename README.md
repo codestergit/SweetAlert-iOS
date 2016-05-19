@@ -34,10 +34,10 @@ SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently del
 ```
 #####Now with even more buttons:
 ```swift
-        	SweetAlert().showAlert("Are you sure?", subTitle: "You files will permanently delete!", style: AlertStyle.Warning, buttonTitles: ["OK", "All", "Cancel", "Exit"], buttonColors: [UIColor.greenColor(), nil, UIColor.grayColor(), UIColor.redColor()]) { (selectedButton) -> Void in
-            	print ("Selected button index: \(selectedButton)")
-            	// starting from index zero
-        	}
+SweetAlert().showAlert("Are you sure?", subTitle: "You files will permanently delete!", style: AlertStyle.Warning, buttonTitles: ["OK", "All", "Cancel", "Exit"], buttonColors: [UIColor.greenColor(), nil, UIColor.grayColor(), UIColor.redColor()]) { (selectedButton) -> Void in
+    print ("Selected button index: \(selectedButton)")
+    // starting from index zero
+}
 ```
 
 
