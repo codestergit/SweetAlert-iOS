@@ -34,6 +34,7 @@ public class SweetAlert: UIViewController {
     var imageView:UIImageView?
     var subTitleTextView = UITextView()
     var userAction:((isOtherButton: Bool) -> Void)? = nil
+    var userActionMore:((selectedButton: Int) -> Void)? = nil
     let kFont = "Helvetica"
 
     init() {
@@ -122,21 +123,22 @@ public class SweetAlert: UIViewController {
         }
         
         var totalWidth: CGFloat = 0.0
-        if buttons.count == 2 {
-            totalWidth = buttonRect[0].size.width + buttonRect[1].size.width + kWidthMargin + 40.0
+        for btnRect in buttonRect {
+            totalWidth += btnRect.size.width;
         }
-        else{
-            totalWidth = buttonRect[0].size.width + 20.0
-        }
+        totalWidth += 20.0 * CGFloat(buttons.count);
+        totalWidth += kWidthMargin * CGFloat(buttons.count - 1);
+        print (totalWidth);
+        
         y += kHeightMargin
         var buttonX = (kContentWidth - totalWidth ) / 2.0
-        for var i = 0; i <  buttons.count; i++ {
+        for i in 0..<buttons.count {
             
                 buttons[i].frame = CGRect(x: buttonX, y: y, width: buttonRect[i].size.width + 20.0, height: buttonRect[i].size.height + 10.0)
                 buttonX = buttons[i].frame.origin.x + kWidthMargin + buttonRect[i].size.width + 20.0
                 buttons[i].layer.cornerRadius = 5.0
                 self.contentView.addSubview(buttons[i])
-                buttons[i].addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                buttons[i].addTarget(self, action: #selector(SweetAlert.pressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
         }
         y += kHeightMargin + buttonRect[0].size.height + 10.0
@@ -177,13 +179,21 @@ public class SweetAlert: UIViewController {
     }
 
     func closeAlert(buttonIndex:Int){
-        if userAction !=  nil {
-            let isOtherButton = buttonIndex == 0 ? true: false
-            SweetAlertContext.shouldNotAnimate = true
-            userAction!(isOtherButton: isOtherButton)
-            SweetAlertContext.shouldNotAnimate = false
+        if (buttons.count == 2) {
+            if userAction !=  nil {
+                let isOtherButton = buttonIndex == 0 ? true: false
+                SweetAlertContext.shouldNotAnimate = true
+                userAction!(isOtherButton: isOtherButton)
+                SweetAlertContext.shouldNotAnimate = false
+            }
+        } else if (buttons.count >= 3) {
+            if userActionMore != nil {
+                SweetAlertContext.shouldNotAnimate = true
+                userActionMore!(selectedButton: buttonIndex)
+                SweetAlertContext.shouldNotAnimate = false
+            }
         }
-
+        
         UIView.animateWithDuration(0.5, delay: 0.0, options: UIViewAnimationOptions.CurveEaseOut, animations: { () -> Void in
             self.view.alpha = 0.0
         }) { (Bool) -> Void in
@@ -284,7 +294,7 @@ public class SweetAlert: UIViewController {
                 let button: UIButton = UIButton(type: UIButtonType.Custom)
                 button.setTitle(otherButtonTitle, forState: UIControlState.Normal)
                 button.backgroundColor = otherButtonColor
-                button.addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                button.addTarget(self, action: #selector(SweetAlert.pressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 button.tag = 1
                 buttons.append(button)
             }
@@ -300,6 +310,74 @@ public class SweetAlert: UIViewController {
                 animateAlert()
             }
     }
+    
+    public func showAlert(title: String,
+                          subTitle: String?,
+                          style: AlertStyle,
+                          buttonTitles: [String],
+                          buttonColors: [UIColor?],
+                          action: ((selectedButton: Int) -> Void)? = nil) {
+        userActionMore = action
+        let window: UIWindow = UIApplication.sharedApplication().keyWindow!
+        window.addSubview(view)
+        window.bringSubviewToFront(view)
+        view.frame = window.bounds
+        self.setupContentView()
+        self.setupTitleLabel()
+        self.setupSubtitleTextView()
+        
+        switch style {
+        case .Success:
+            self.animatedView = SuccessAnimatedView()
+            
+        case .Error:
+            self.animatedView = CancelAnimatedView()
+            
+        case .Warning:
+            self.animatedView = InfoAnimatedView()
+            
+        case let .CustomImag(imageFile):
+            if let image = UIImage(named: imageFile) {
+                self.imageView = UIImageView(image: image)
+            }
+        case .None:
+            self.animatedView = nil
+        }
+        
+        self.titleLabel.text = title
+        if subTitle != nil {
+            self.subTitleTextView.text = subTitle
+        }
+        buttons = []
+        var lastColor = UIColor.colorFromRGB(0xAEDEF4);
+        for i in 0..<buttonTitles.count {
+            let title = buttonTitles[i]
+            if let color = buttonColors[i] {
+                lastColor = color
+            }
+            if (title.isEmpty == false) {
+                let button: UIButton = UIButton(type: UIButtonType.Custom)
+                button.setTitle(title, forState: UIControlState.Normal)
+                button.backgroundColor = lastColor
+                button.userInteractionEnabled = true
+                button.tag = i
+                button.addTarget(self, action: #selector(SweetAlert.pressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+                buttons.append(button)
+            }
+        }
+        
+        resizeAndRelayout()
+        if SweetAlertContext.shouldNotAnimate == true {
+            //Do not animate Alert
+            if self.animatedView != nil {
+                self.animatedView!.animate()
+            }
+        }
+        else {
+            animateAlert()
+        }
+    }
+    
 
     func animateAlert() {
 
