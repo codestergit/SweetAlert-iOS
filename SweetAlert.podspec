@@ -7,6 +7,7 @@ Pod::Spec.new do |s|
   s.author       = {'codestergit' => 'https://github.com/codestergit/SweetAlert-iOS'}
   s.source       = { :git => 'https://github.com/codestergit/SweetAlert-iOS.git',  :tag => "#{s.version}"}
   s.ios.deployment_target = '8.0'
+  s.watchos.deployment_target = '2.2'
   s.source_files = 'SweetAlert/*.swift'
   s.requires_arc = 'true'
 end
