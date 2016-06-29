@@ -60,7 +60,7 @@ public class SweetAlert: UIViewController {
         
         dismissButton = UIButton(type: UIButtonType.Custom)
         dismissButton.setImage(UIImage(named: "stop_black"), forState: UIControlState.Normal)
-        dismissButton.addTarget(self, action: "dismissButtonPressed:", forControlEvents: UIControlEvents.TouchUpInside)
+        dismissButton.addTarget(self, action: #selector(SweetAlert.dismissButtonPressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         dismissView!.addSubview(dismissButton)
     }
     
@@ -157,13 +157,13 @@ public class SweetAlert: UIViewController {
         
         y += kHeightMargin
         var buttonX = (kMaxWidth - kContentWidth) / 2.0
-        for var i = 0; i <  buttons.count; i++ {
+        for i in 0 ..< buttons.count {
             
             buttons[i].frame = CGRect(x: buttonX, y: y, width: buttonWidth, height: kButtonHeight)
             buttonX = buttonX + buttons[i].bounds.size.width + kWidthMargin
             buttons[i].layer.cornerRadius = 5.0
             self.contentView.addSubview(buttons[i])
-            buttons[i].addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
+            buttons[i].addTarget(self, action: #selector(SweetAlert.pressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             
         }
         
@@ -368,7 +368,7 @@ public class SweetAlert: UIViewController {
                 let button: UIButton = UIButton(type: UIButtonType.Custom)
                 button.setTitle(otherButtonTitle, forState: UIControlState.Normal)
                 button.backgroundColor = otherButtonColor
-                button.addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                button.addTarget(self, action: #selector(SweetAlert.pressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 button.tag = 1
                 buttons.append(button)
             }
