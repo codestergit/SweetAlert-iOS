@@ -36,7 +36,7 @@ public class SweetAlert: UIViewController {
     var userAction:((isOtherButton: Bool) -> Void)? = nil
     let kFont = "Helvetica"
 
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: nil)
         self.view.frame = UIScreen.mainScreen().bounds
         self.view.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth]
@@ -600,15 +600,3 @@ class SuccessAnimatedView: AnimatableView {
     }
     
 }
-
-extension UIColor {
-    class func colorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-}
-
