@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		784864ED6A0B7AF68C8DE1D8 /* SweetAlert.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 784869A188ADBAB6A90C84DF /* SweetAlert.podspec */; };
-		9B4286E81A0D2F5C00E9913B /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4286E71A0D2F5C00E9913B /* SweetAlert.swift */; };
+		951A808B1D747DF4000FEF30 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951A808A1D747DF4000FEF30 /* ViewController.swift */; };
+		99C82A2380BFA3A989CD8CF2 /* Pods_SweetAlert_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69E2B89D4CDEF0719694AC70 /* Pods_SweetAlert_Example.framework */; };
 		9B4286EB1A0D2F7700E9913B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4286E91A0D2F7700E9913B /* AppDelegate.swift */; };
-		9B4286EC1A0D2F7700E9913B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4286EA1A0D2F7700E9913B /* ViewController.swift */; };
 		9B4286EE1A0D2FA000E9913B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286ED1A0D2FA000E9913B /* Images.xcassets */; };
 		9B4286F31A0D2FAF00E9913B /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286EF1A0D2FAF00E9913B /* LaunchScreen.xib */; };
 		9B4286F41A0D2FAF00E9913B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286F11A0D2FAF00E9913B /* Main.storyboard */; };
@@ -21,19 +20,21 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		784869A188ADBAB6A90C84DF /* SweetAlert.podspec */ = {isa = PBXFileReference; lastKnownFileType = file.podspec; path = SweetAlert.podspec; sourceTree = "<group>"; };
-		9B4286E71A0D2F5C00E9913B /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SweetAlert.swift; path = SweetAlert/SweetAlert.swift; sourceTree = SOURCE_ROOT; };
+		22C2406019C8DC4D27453217 /* Pods-SweetAlert_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetAlert_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SweetAlert_Example/Pods-SweetAlert_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		5F449D00C383589054EF03C2 /* Pods-SweetAlert_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SweetAlert_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-SweetAlert_Example/Pods-SweetAlert_Example.release.xcconfig"; sourceTree = "<group>"; };
+		69E2B89D4CDEF0719694AC70 /* Pods_SweetAlert_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetAlert_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		951A808A1D747DF4000FEF30 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = SweetAlert/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		9B4286E91A0D2F7700E9913B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SweetAlert/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
-		9B4286EA1A0D2F7700E9913B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = SweetAlert/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		9B4286ED1A0D2FA000E9913B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SweetAlert/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		9B4286F01A0D2FAF00E9913B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = SweetAlert/Base.lproj/LaunchScreen.xib; sourceTree = SOURCE_ROOT; };
 		9B4286F21A0D2FAF00E9913B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = SweetAlert/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		9B4286F51A0D2FC500E9913B /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SweetAlert/Info.plist; sourceTree = SOURCE_ROOT; };
 		9B4286F61A0D2FC500E9913B /* logo_big.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo_big.png; path = SweetAlert/logo_big.png; sourceTree = SOURCE_ROOT; };
 		9B4286F71A0D2FC500E9913B /* SweetAlert.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SweetAlert.png; path = SweetAlert/SweetAlert.png; sourceTree = SOURCE_ROOT; };
-		9B4CD1081A06E55200B65DE0 /* SweetAlert.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetAlert.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9B4CD1081A06E55200B65DE0 /* SweetAlert_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetAlert_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B4CD1301A06E9C400B65DE0 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9BCAC7A41A0E0B3600282753 /* thumb.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = thumb.jpg; sourceTree = SOURCE_ROOT; };
+		DFE352FFEBBF084332DFAFA1 /* Pods_SweetAlert.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SweetAlert.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,12 +43,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				9B4CD1311A06E9C400B65DE0 /* QuartzCore.framework in Frameworks */,
+				99C82A2380BFA3A989CD8CF2 /* Pods_SweetAlert_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		489D30C8BBF06DBAA9E07174 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				22C2406019C8DC4D27453217 /* Pods-SweetAlert_Example.debug.xcconfig */,
+				5F449D00C383589054EF03C2 /* Pods-SweetAlert_Example.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6F2524AC9DC11C207B769DEE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DFE352FFEBBF084332DFAFA1 /* Pods_SweetAlert.framework */,
+				69E2B89D4CDEF0719694AC70 /* Pods_SweetAlert_Example.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		9B4286FB1A0D300300E9913B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -61,14 +81,15 @@
 			children = (
 				9B4CD10A1A06E55200B65DE0 /* SweetAlert */,
 				9B4CD1091A06E55200B65DE0 /* Products */,
-				784869A188ADBAB6A90C84DF /* SweetAlert.podspec */,
+				489D30C8BBF06DBAA9E07174 /* Pods */,
+				6F2524AC9DC11C207B769DEE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
 		9B4CD1091A06E55200B65DE0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9B4CD1081A06E55200B65DE0 /* SweetAlert.app */,
+				9B4CD1081A06E55200B65DE0 /* SweetAlert_Example.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -76,12 +97,8 @@
 		9B4CD10A1A06E55200B65DE0 /* SweetAlert */ = {
 			isa = PBXGroup;
 			children = (
-				9B4CD12D1A06E7EF00B65DE0 /* SweetAlert */,
 				9B4286E91A0D2F7700E9913B /* AppDelegate.swift */,
-				9B4286EA1A0D2F7700E9913B /* ViewController.swift */,
-				9B4286EF1A0D2FAF00E9913B /* LaunchScreen.xib */,
-				9B4286F11A0D2FAF00E9913B /* Main.storyboard */,
-				9B4286ED1A0D2FA000E9913B /* Images.xcassets */,
+				951A808A1D747DF4000FEF30 /* ViewController.swift */,
 				9B4CD10B1A06E55200B65DE0 /* Supporting Files */,
 			);
 			name = SweetAlert;
@@ -91,6 +108,9 @@
 		9B4CD10B1A06E55200B65DE0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9B4286ED1A0D2FA000E9913B /* Images.xcassets */,
+				9B4286F11A0D2FAF00E9913B /* Main.storyboard */,
+				9B4286EF1A0D2FAF00E9913B /* LaunchScreen.xib */,
 				9BCAC7A41A0E0B3600282753 /* thumb.jpg */,
 				9B4286FB1A0D300300E9913B /* Frameworks */,
 				9B4286F51A0D2FC500E9913B /* Info.plist */,
@@ -100,32 +120,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		9B4CD12D1A06E7EF00B65DE0 /* SweetAlert */ = {
-			isa = PBXGroup;
-			children = (
-				9B4286E71A0D2F5C00E9913B /* SweetAlert.swift */,
-			);
-			name = SweetAlert;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9B4CD1071A06E55200B65DE0 /* SweetAlert */ = {
+		9B4CD1071A06E55200B65DE0 /* SweetAlert_Example */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9B4CD1271A06E55300B65DE0 /* Build configuration list for PBXNativeTarget "SweetAlert" */;
+			buildConfigurationList = 9B4CD1271A06E55300B65DE0 /* Build configuration list for PBXNativeTarget "SweetAlert_Example" */;
 			buildPhases = (
+				9E2C19A532D3F34A79BF4B35 /* 📦 Check Pods Manifest.lock */,
 				9B4CD1041A06E55200B65DE0 /* Sources */,
 				9B4CD1051A06E55200B65DE0 /* Frameworks */,
 				9B4CD1061A06E55200B65DE0 /* Resources */,
+				AF00CD7142872EC0C18DCD68 /* 📦 Embed Pods Frameworks */,
+				C3CDF2FF5B972BC8337C60B2 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = SweetAlert;
+			name = SweetAlert_Example;
 			productName = GNDBLAlert;
-			productReference = 9B4CD1081A06E55200B65DE0 /* SweetAlert.app */;
+			productReference = 9B4CD1081A06E55200B65DE0 /* SweetAlert_Example.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -142,7 +157,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 9B4CD1031A06E55200B65DE0 /* Build configuration list for PBXProject "SweetAlert" */;
+			buildConfigurationList = 9B4CD1031A06E55200B65DE0 /* Build configuration list for PBXProject "SweetAlert_Example" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -155,7 +170,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9B4CD1071A06E55200B65DE0 /* SweetAlert */,
+				9B4CD1071A06E55200B65DE0 /* SweetAlert_Example */,
 			);
 		};
 /* End PBXProject section */
@@ -171,20 +186,66 @@
 				9B4286F41A0D2FAF00E9913B /* Main.storyboard in Resources */,
 				9B4286F91A0D2FC500E9913B /* logo_big.png in Resources */,
 				9BCAC7A51A0E0B3600282753 /* thumb.jpg in Resources */,
-				784864ED6A0B7AF68C8DE1D8 /* SweetAlert.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9E2C19A532D3F34A79BF4B35 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AF00CD7142872EC0C18DCD68 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SweetAlert_Example/Pods-SweetAlert_Example-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3CDF2FF5B972BC8337C60B2 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SweetAlert_Example/Pods-SweetAlert_Example-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9B4CD1041A06E55200B65DE0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B4286EC1A0D2F7700E9913B /* ViewController.swift in Sources */,
+				951A808B1D747DF4000FEF30 /* ViewController.swift in Sources */,
 				9B4286EB1A0D2F7700E9913B /* AppDelegate.swift in Sources */,
-				9B4286E81A0D2F5C00E9913B /* SweetAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -290,30 +351,32 @@
 		};
 		9B4CD1281A06E55300B65DE0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22C2406019C8DC4D27453217 /* Pods-SweetAlert_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SweetAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GNDBL.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SweetAlert_Example;
 			};
 			name = Debug;
 		};
 		9B4CD1291A06E55300B65DE0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F449D00C383589054EF03C2 /* Pods-SweetAlert_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = SweetAlert/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GNDBL.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SweetAlert_Example;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9B4CD1031A06E55200B65DE0 /* Build configuration list for PBXProject "SweetAlert" */ = {
+		9B4CD1031A06E55200B65DE0 /* Build configuration list for PBXProject "SweetAlert_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B4CD1251A06E55300B65DE0 /* Debug */,
@@ -322,7 +385,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9B4CD1271A06E55300B65DE0 /* Build configuration list for PBXNativeTarget "SweetAlert" */ = {
+		9B4CD1271A06E55300B65DE0 /* Build configuration list for PBXNativeTarget "SweetAlert_Example" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				9B4CD1281A06E55300B65DE0 /* Debug */,

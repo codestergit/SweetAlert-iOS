@@ -1,0 +1,6 @@
+use_frameworks!
+
+target 'SweetAlert_Example' do
+  pod 'SweetAlert', :path => '../'
+
+end

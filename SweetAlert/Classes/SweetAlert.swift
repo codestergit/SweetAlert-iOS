@@ -36,7 +36,7 @@ public class SweetAlert: UIViewController {
     var userAction:((isOtherButton: Bool) -> Void)? = nil
     let kFont = "Helvetica"
 
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: nil)
         self.view.frame = UIScreen.mainScreen().bounds
         self.view.autoresizingMask = [UIViewAutoresizing.FlexibleHeight, UIViewAutoresizing.FlexibleWidth]
@@ -130,13 +130,13 @@ public class SweetAlert: UIViewController {
         }
         y += kHeightMargin
         var buttonX = (kContentWidth - totalWidth ) / 2.0
-        for var i = 0; i <  buttons.count; i++ {
+        for i in 0 ..< buttons.count {
             
                 buttons[i].frame = CGRect(x: buttonX, y: y, width: buttonRect[i].size.width + 20.0, height: buttonRect[i].size.height + 10.0)
                 buttonX = buttons[i].frame.origin.x + kWidthMargin + buttonRect[i].size.width + 20.0
                 buttons[i].layer.cornerRadius = 5.0
                 self.contentView.addSubview(buttons[i])
-                buttons[i].addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                buttons[i].addTarget(self, action: #selector(SweetAlert.pressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
         }
         y += kHeightMargin + buttonRect[0].size.height + 10.0
@@ -284,7 +284,7 @@ public class SweetAlert: UIViewController {
                 let button: UIButton = UIButton(type: UIButtonType.Custom)
                 button.setTitle(otherButtonTitle, forState: UIControlState.Normal)
                 button.backgroundColor = otherButtonColor
-                button.addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                button.addTarget(self, action: #selector(SweetAlert.pressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 button.tag = 1
                 buttons.append(button)
             }
@@ -600,15 +600,3 @@ class SuccessAnimatedView: AnimatableView {
     }
     
 }
-
-extension UIColor {
-    class func colorFromRGB(rgbValue: UInt) -> UIColor {
-        return UIColor(
-            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
-            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
-            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
-            alpha: CGFloat(1.0)
-        )
-    }
-}
-
