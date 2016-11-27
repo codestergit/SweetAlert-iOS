@@ -130,13 +130,13 @@ public class SweetAlert: UIViewController {
         }
         y += kHeightMargin
         var buttonX = (kContentWidth - totalWidth ) / 2.0
-        for var i = 0; i <  buttons.count; i++ {
+        for i in 0 ..< buttons.count {
             
                 buttons[i].frame = CGRect(x: buttonX, y: y, width: buttonRect[i].size.width + 20.0, height: buttonRect[i].size.height + 10.0)
                 buttonX = buttons[i].frame.origin.x + kWidthMargin + buttonRect[i].size.width + 20.0
                 buttons[i].layer.cornerRadius = 5.0
                 self.contentView.addSubview(buttons[i])
-                buttons[i].addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                buttons[i].addTarget(self, action: #selector(SweetAlert.pressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
 
         }
         y += kHeightMargin + buttonRect[0].size.height + 10.0
@@ -284,7 +284,7 @@ public class SweetAlert: UIViewController {
                 let button: UIButton = UIButton(type: UIButtonType.Custom)
                 button.setTitle(otherButtonTitle, forState: UIControlState.Normal)
                 button.backgroundColor = otherButtonColor
-                button.addTarget(self, action: "pressed:", forControlEvents: UIControlEvents.TouchUpInside)
+                button.addTarget(self, action: #selector(SweetAlert.pressed(_:)), forControlEvents: UIControlEvents.TouchUpInside)
                 button.tag = 1
                 buttons.append(button)
             }
