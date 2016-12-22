@@ -14,21 +14,21 @@ SweetAlert().showAlert("Here's a message!")
 ```
 #####Title with a text under：
 ```swift
-SweetAlert().showAlert("Here's a message!", subTitle: "It's pretty, isn't it?", style: AlertStyle.None)
+SweetAlert().showAlert("Here's a message!", subTitle: "It's pretty, isn't it?", style: AlertStyle.none)
 ```
 #####Animated Success message：
 ```swift
-SweetAlert().showAlert("Good job!", subTitle: "You clicked the button!", style: AlertStyle.Success)
+SweetAlert().showAlert("Good job!", subTitle: "You clicked the button!", style: AlertStyle.success)
 ```
 #####Warning message and Chained Animated Success messge on completion:
 ```swift
-SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.Warning, buttonTitle:"Cancel", buttonColor:UIColorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.warning, buttonTitle:"Cancel", buttonColor:UIColorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
             
                 println("Cancel Button  Pressed")
             }
             else {
-                SweetAlert().showAlert("Deleted!", subTitle: "Your imaginary file has been deleted!", style: AlertStyle.Success)
+                SweetAlert().showAlert("Deleted!", subTitle: "Your imaginary file has been deleted!", style: AlertStyle.success)
             }
 }
 ```
@@ -36,34 +36,34 @@ SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently del
 #####Chained Alerts on actions with custom button colors:
 ```swift
 //Chaining alerts with messages on button click
-SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.Warning, buttonTitle:"No, cancel plx!", buttonColor:UIColorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.warning, buttonTitle:"No, cancel plx!", buttonColor:UIColorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
                 
-                SweetAlert().showAlert("Cancelled!", subTitle: "Your imaginary file is safe", style: AlertStyle.Error)
+                SweetAlert().showAlert("Cancelled!", subTitle: "Your imaginary file is safe", style: AlertStyle.error)
             }
             else {
-                SweetAlert().showAlert("Deleted!", subTitle: "Your imaginary file has been deleted!", style: AlertStyle.Success)
+                SweetAlert().showAlert("Deleted!", subTitle: "Your imaginary file has been deleted!", style: AlertStyle.success)
             }
 }
 ```
 #####Custom icon alert:
 ```swift
-SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: AlertStyle.CustomImag(imageFile: "thumb.jpg"))
+SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: AlertStyle.customImag(imageFile: "thumb.jpg"))
 ```
 
 ###Diffrent Animated Styles for Diffrent Purposes
 ```swift
 enum AlertStyle {
-    case Success,Error,Warning,None
-    case CustomImag(imageFile:String)
+    case success,error,warning,none
+    case customImag(imageFile:String)
 }
 ```
 ###Installation
 Add the `SwiftAlert.swift` in to your project.
 
-###Reuirements
-- Xcode 7.0+
-- iOS 7.0+
+###Requirements
+- Xcode 8.0+
+- iOS 8.0+
 
 ## License
 
