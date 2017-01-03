@@ -11,8 +11,19 @@ import UIKit
 import QuartzCore
 
 public enum AlertStyle {
-    case success,error,warning,none
+    case success,error,warning,none,loading
     case customImag(imageFile:String)
+}
+public func ==(left: AlertStyle, right: AlertStyle) -> Bool{
+    switch (left,right) {
+        case (.Success, .Success): return true
+        case (.Error, .Error): return true
+        case (.Warning, .Warning): return true
+        case (.None, .None) return true
+        case (.Loading, .Loading) return true
+        case (.CustomImag(let rFile), .CustomImag(let lFile)) where rFile == lFile: return true
+        default: return false
+    }   
 }
 
 open class SweetAlert: UIViewController {
@@ -106,7 +117,7 @@ open class SweetAlert: UIViewController {
         }
         
         // Subtitle
-        if self.subTitleTextView.text.isEmpty == false {
+        if !self.subTitleTextView.text.isEmpty {
             let subtitleString = subTitleTextView.text! as NSString
             let rect = subtitleString.boundingRect(with: CGSize(width: width, height: 0.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:subTitleTextView.font!], context: nil)
             textViewHeight = ceil(rect.size.height) + 10.0
@@ -178,7 +189,7 @@ open class SweetAlert: UIViewController {
 
     func closeAlert(_ buttonIndex:Int){
         if userAction !=  nil {
-            let isOtherButton = buttonIndex == 0 ? true: false
+            let isOtherButton = buttonIndex == 0
             SweetAlertContext.shouldNotAnimate = true
             userAction!(isOtherButton)
             SweetAlertContext.shouldNotAnimate = false
@@ -255,6 +266,9 @@ open class SweetAlert: UIViewController {
             case .error:
                 self.animatedView = CancelAnimatedView()
                 
+            case .loading:
+                self.animatedView = LoadingAnimatedView()
+
             case .warning:
                 self.animatedView = InfoAnimatedView()
                 
@@ -271,7 +285,7 @@ open class SweetAlert: UIViewController {
                 self.subTitleTextView.text = subTitle
             }
             buttons = []
-            if buttonTitle.isEmpty == false {
+            if !buttonTitle.isEmpty && !(style == .loading) {
                 let button: UIButton = UIButton(type: UIButtonType.custom)
                 button.setTitle(buttonTitle, for: UIControlState())
                 button.backgroundColor = buttonColor
@@ -280,7 +294,7 @@ open class SweetAlert: UIViewController {
                 buttons.append(button)
             }
             
-            if otherButtonTitle != nil && otherButtonTitle!.isEmpty == false {
+            if otherButtonTitle != nil && !otherButtonTitle!.isEmpty {
                 let button: UIButton = UIButton(type: UIButtonType.custom)
                 button.setTitle(otherButtonTitle, for: UIControlState())
                 button.backgroundColor = otherButtonColor
@@ -290,7 +304,7 @@ open class SweetAlert: UIViewController {
             }
 
             resizeAndRelayout()
-            if SweetAlertContext.shouldNotAnimate == true {
+            if SweetAlertContext.shouldNotAnimate {
                 //Do not animate Alert
                 if self.animatedView != nil {
                     self.animatedView!.animate()
@@ -342,6 +356,79 @@ open class SweetAlert: UIViewController {
 class AnimatableView: UIView {
     func animate(){
         print("Should overide by subclasss", terminator: "")
+    }
+}
+
+class LoadingAnimatedView: AnimatableView{
+    var circleLayer: CAShapeLayer = CAShapeLayer()
+    private var circlePath: CGPath {
+        let path = UIBezierPath()
+        let startAngle: CGFloat = M_PI/2 //2*M_PI//CGFloat((M_PI/2))
+        let endAngle: CGFloat = 0
+        path.addArcWithCenter(CGPointMake(self.frame.size.width/2.0, self.frame.size.width/2.0), radius: self.frame.size.width/2.0, startAngle: startAngle, endAngle: endAngle, clockwise: true)
+        return path.CGPath
+    }
+    override required init(frame: CGRect) {
+        super.init(frame: frame)
+        setupLayers()
+    }
+    override func layoutSubviews() {
+        setupLayers()
+    }
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    private func setupLayers(){
+        circleAnimation.path = circlePath
+        circleAnimation.fillColor=UIColor.clearColor().CGColor
+        circleAnimation.strokeColor=UIColor.colorFromRGB(0x2960FF).CGColor
+        circleAnimation.lineCap=kCALineCapRound
+        circleAnimation.lineWidth=4
+        circleAnimation.frame=CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
+        circleAnimation.position=CGPoint(x: self.frame.size.width/2.0, y: self.frame.size.height/2.0)
+        layer.addSublayer(circleAnimation)
+    }
+    override func animate(){
+        let animation=CABasicAnimation(keyPath: "transform.rotation")
+        animation.duration=2.0
+        animation.byValue=NSNumber(double: 2*M_PI )
+        animation.repeatCount = Float.infinity
+        
+        let shrinkAnimation = CABasicAnimation(keyPath: "strokeStart")
+        shrinkAnimation.duration=0.75
+        shrinkAnimation.removedOnCompletion=false
+        shrinkAnimation.fromValue=0
+        shrinkAnimation.toValue=0.75
+        shrinkAnimation.fillMode=kCAFillModeForwards
+        shrinkAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        let moveStartAnimation = CABasicAnimation(keyPath: "strokeStart")
+        moveStartAnimation.duration=0.75
+        moveStartAnimation.removedOnCompletion=false
+        moveStartAnimation.fromValue=0.75
+        moveStartAnimation.toValue=1
+        moveStartAnimation.beginTime=0.75
+        moveStartAnimation.fillMode=kCAFillModeForwards
+        moveStartAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        let growAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        growAnimation.duration=1.5
+        growAnimation.removedOnCompletion=false
+        growAnimation.fromValue=0
+        growAnimation.toValue=0.75
+        growAnimation.beginTime=0.75
+        growAnimation.fillMode=kCAFillModeForwards
+        growAnimation.timingFunction &&= CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+
+        let groupAnimations = CAAnimationGroup()
+        groupAnimations.animations = [shrinkAnimation,moveStartAnimation,growAnimation]
+        groupAnimations.repeatCount=Float.infinity
+        groupAnimations.duration=2.25//4.5
+        groupAnimations.fillMode=kCAFillModeForwards
+        
+        circleAnimation.addAnimation(groupAnimations, forKey: "drawAnimation")
+        //circleAnimation.addAnimation(animation, forKey: "rotateAnimation")
     }
 }
 
