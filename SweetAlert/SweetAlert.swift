@@ -14,17 +14,6 @@ public enum AlertStyle {
     case success,error,warning,none,loading
     case customImag(imageFile:String)
 }
-public func ==(left: AlertStyle, right: AlertStyle) -> Bool{
-    switch (left,right) {
-        case (.Success, .Success): return true
-        case (.Error, .Error): return true
-        case (.Warning, .Warning): return true
-        case (.None, .None) return true
-        case (.Loading, .Loading) return true
-        case (.CustomImag(let rFile), .CustomImag(let lFile)) where rFile == lFile: return true
-        default: return false
-    }   
-}
 
 open class SweetAlert: UIViewController {
     let kBakcgroundTansperancy: CGFloat = 0.7
@@ -285,7 +274,7 @@ open class SweetAlert: UIViewController {
                 self.subTitleTextView.text = subTitle
             }
             buttons = []
-            if !buttonTitle.isEmpty && !(style == .loading) {
+            if !buttonTitle.isEmpty {
                 let button: UIButton = UIButton(type: UIButtonType.custom)
                 button.setTitle(buttonTitle, for: UIControlState())
                 button.backgroundColor = buttonColor
@@ -363,8 +352,8 @@ class LoadingAnimatedView: AnimatableView{
     var circleLayer: CAShapeLayer = CAShapeLayer()
     private var circlePath: CGPath {
         let path = UIBezierPath()
-        let startAngle: CGFloat = M_PI/2 //2*M_PI//CGFloat((M_PI/2))
-        let endAngle: CGFloat = 0
+        let startAngle: CGFloat = 0
+        let endAngle: CGFloat = 2*M_PI
         path.addArcWithCenter(CGPointMake(self.frame.size.width/2.0, self.frame.size.width/2.0), radius: self.frame.size.width/2.0, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         return path.CGPath
     }
@@ -387,6 +376,9 @@ class LoadingAnimatedView: AnimatableView{
         circleAnimation.frame=CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         circleAnimation.position=CGPoint(x: self.frame.size.width/2.0, y: self.frame.size.height/2.0)
         layer.addSublayer(circleAnimation)
+        CATransaction.begin()
+        circleAnimation.strokeStart=0.25
+        CATransaction.commit()
     }
     override func animate(){
         let animation=CABasicAnimation(keyPath: "transform.rotation")
@@ -397,38 +389,55 @@ class LoadingAnimatedView: AnimatableView{
         let shrinkAnimation = CABasicAnimation(keyPath: "strokeStart")
         shrinkAnimation.duration=0.75
         shrinkAnimation.removedOnCompletion=false
-        shrinkAnimation.fromValue=0
-        shrinkAnimation.toValue=0.75
+        shrinkAnimation.fromValue=0.25
+        shrinkAnimation.toValue=0.9999
         shrinkAnimation.fillMode=kCAFillModeForwards
         shrinkAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        let moveToStart = CABasicAnimation(keyPath: "strokeStart")
+        moveToStart.duration=0.001
+        moveToStart.removedOnCompletion=false
+        moveToStart.fromValue=0
+        moveToStart.toValue=0
+        moveToStart.beginTime=0.75
+        moveToStart.fillMode=kCAFillModeForwards
+        moveToStart.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        
+        let moveEndToStart = CABasicAnimation(keyPath: "stokeEnd")
+        moveEndToStart.duration=0.001
+        moveEndToStart.removedOnCompletion=false
+        moveEndToStart.fromValue=0
+        moveEndToStart.toValue=0.001
+        moveEndToStart.beginTime=0.75
+        moveEndToStart.fillMode=kCAFillModeForwards
+        moveEndToStart.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
         let moveStartAnimation = CABasicAnimation(keyPath: "strokeStart")
         moveStartAnimation.duration=0.75
         moveStartAnimation.removedOnCompletion=false
-        moveStartAnimation.fromValue=0.75
-        moveStartAnimation.toValue=1
-        moveStartAnimation.beginTime=0.75
+        moveStartAnimation.fromValue=0
+        moveStartAnimation.toValue=0.25
+        moveStartAnimation.beginTime=0.7501
         moveStartAnimation.fillMode=kCAFillModeForwards
         moveStartAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
         let growAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        growAnimation.duration=1.5
+        growAnimation.duration=0.75
         growAnimation.removedOnCompletion=false
-        growAnimation.fromValue=0
-        growAnimation.toValue=0.75
-        growAnimation.beginTime=0.75
+        growAnimation.fromValue=0.001
+        growAnimation.toValue=1
+        growAnimation.beginTime=0.7501
         growAnimation.fillMode=kCAFillModeForwards
-        growAnimation.timingFunction &&= CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        growAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         
-
         let groupAnimations = CAAnimationGroup()
-        groupAnimations.animations = [shrinkAnimation,moveStartAnimation,growAnimation]
+        groupAnimations.animations = [shrinkAnimation,moveEndToStart,moveToStart,growAnimation,moveStartAnimation]
         groupAnimations.repeatCount=Float.infinity
-        groupAnimations.duration=2.25//4.5
+        groupAnimations.duration=1.5001
         groupAnimations.fillMode=kCAFillModeForwards
         
-        circleAnimation.addAnimation(groupAnimations, forKey: "drawAnimation")
-        //circleAnimation.addAnimation(animation, forKey: "rotateAnimation")
+        circleAnimation.add(groupAnimations, forKey: "drawAnimation")
+        circleAnimation.add(animation, forKey: "rotateAnimation")
     }
 }
 
