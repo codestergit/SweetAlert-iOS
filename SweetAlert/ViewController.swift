@@ -29,46 +29,45 @@ class ViewController: UIViewController {
 
     
     @IBAction func aBasicMessageAlert(_ sender: AnyObject) {
-        _ = SweetAlert().showAlert("Here's a message!")
+        _ = SweetAlert().showAlert("Here's a message!", EnabledOutsideTap: false)
     }
     
 
     @IBAction func subtitleAlert(_ sender: AnyObject) {
     
-        _ = SweetAlert().showAlert("Here's a message!", subTitle: "It's pretty, isn't it?", style: AlertStyle.none)
+        _ = SweetAlert().showAlert("Here's a message!", subTitle: "It's pretty, isn't it?", style: AlertStyle.none, EnabledOutsideTap: true)
     }
     
     @IBAction func sucessAlert(_ sender: AnyObject) {
-        _ = SweetAlert().showAlert("Good job!", subTitle: "You clicked the button!", style: AlertStyle.success)
+        _ = SweetAlert().showAlert("Good job!", subTitle: "You clicked the button!", style: AlertStyle.success, EnabledOutsideTap: true)
     }
     
     @IBAction func warningAlert(_ sender: AnyObject) {
-        _ = SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.warning, buttonTitle:"Cancel", buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+        _ = SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.warning, buttonTitle:"Cancel", buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!",otherButtonColor: UIColor.colorFromRGB(0xDD6B55), EnabledOutsideTap: true) { (isOtherButton) -> Void in
             if isOtherButton == true {
-            
+                
                 print("Cancel Button  Pressed", terminator: "")
             }
             else {
-                _ = SweetAlert().showAlert("Deleted!", subTitle: "Your imaginary file has been deleted!", style: AlertStyle.success)
+                _ = SweetAlert().showAlert("Deleted!", subTitle: "Your imaginary file has been deleted!", style: AlertStyle.success, EnabledOutsideTap: true)
             }
         }
     }
     
     @IBAction func cancelAndConfirm(_ sender: AnyObject) {
-        _ = SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.warning, buttonTitle:"No, cancel plx!", buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColor.colorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
+        _ = SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.warning, buttonTitle:"No, cancel plx!", buttonColor:UIColor.colorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColor.colorFromRGB(0xDD6B55), EnabledOutsideTap: true) { (isOtherButton) -> Void in
             if isOtherButton == true {
-                
-                _ = SweetAlert().showAlert("Cancelled!", subTitle: "Your imaginary file is safe", style: AlertStyle.error)
+                _ = SweetAlert().showAlert("Cancelled!", subTitle: "Your imaginary file is safe", style: AlertStyle.error, EnabledOutsideTap: true)
             }
             else {
-                _ = SweetAlert().showAlert("Deleted!", subTitle: "Your imaginary file has been deleted!", style: AlertStyle.success)
+                _ = SweetAlert().showAlert("Deleted!", subTitle: "Your imaginary file has been deleted!", style: AlertStyle.success, EnabledOutsideTap: true)
             }
         }
 
     }
     
     @IBAction func customIconAlert(_ sender: AnyObject) {
-        _ = SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: AlertStyle.customImag(imageFile: "thumb.jpg"))
+        _ = SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: AlertStyle.customImage(imageFile: "thumb.jpg"), EnabledOutsideTap: true)
     }
     
 }
