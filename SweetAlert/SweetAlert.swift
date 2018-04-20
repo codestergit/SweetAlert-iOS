@@ -18,7 +18,7 @@ public enum AlertStyle {
 open class SweetAlert: UIViewController {
     let kBakcgroundTansperancy: CGFloat = 0.7
     let kHeightMargin: CGFloat = 10.0
-    let KTopMargin: CGFloat = 20.0
+    let kTopMargin: CGFloat = 20.0
     let kWidthMargin: CGFloat = 10.0
     let kAnimatedViewHeight: CGFloat = 70.0
     let kMaxHeight: CGFloat = 300.0
@@ -83,7 +83,7 @@ open class SweetAlert: UIViewController {
         let mainScreenBounds = UIScreen.main.bounds
         self.view.frame.size = mainScreenBounds.size
         let x: CGFloat = kWidthMargin
-        var y: CGFloat = KTopMargin
+        var y: CGFloat = kTopMargin
         let width: CGFloat = kContentWidth - (kWidthMargin*2)
         
         if animatedView != nil {
