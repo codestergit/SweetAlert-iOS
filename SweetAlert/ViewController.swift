@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func customIconAlert(_ sender: AnyObject) {
-        _ = SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: AlertStyle.customImag(imageFile: "thumb.jpg"))
+        _ = SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: AlertStyle.customImage(imageFile: "thumb.jpg"))
     }
     
 }
