@@ -2,25 +2,25 @@ Sweet Alert iOS
 ==============
 
 Beautiful Animated custom Alert View inspired from javascript library [SweetAlert](http://tristanedwards.me/sweetalert).
-Written in Swift this SweetAlertView can be used in Swift and Objective-C projects. SweetAlertView provides live intutive experience to user actions.It can be used in place of `UIAlertView` and `UIAlertController`
+Written in Swift this SweetAlertView can be used in Swift and Objective-C projects. SweetAlertView provides live intutive experience to user actions.It can be used in place of  `UIAlertView`  and  `UIAlertController`.
 
-###ScreenShots
+### ScreenShots
 ![SweetAlert](https://github.com/codestergit/SweetAlert-iOS/blob/master/SweetAlertiOS.gif)
 
-###Usage
-#####Basic message：
+### Usage
+##### Basic message：
 ```swift
 SweetAlert().showAlert("Here's a message!")
 ```
-#####Title with a text under：
+##### Title with a text under：
 ```swift
 SweetAlert().showAlert("Here's a message!", subTitle: "It's pretty, isn't it?", style: AlertStyle.None)
 ```
-#####Animated Success message：
+##### Animated Success message：
 ```swift
 SweetAlert().showAlert("Good job!", subTitle: "You clicked the button!", style: AlertStyle.Success)
 ```
-#####Warning message and Chained Animated Success messge on completion:
+##### Warning message and Chained Animated Success messge on completion:
 ```swift
 SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.Warning, buttonTitle:"Cancel", buttonColor:UIColorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
             if isOtherButton == true {
@@ -33,7 +33,7 @@ SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently del
 }
 ```
 
-#####Chained Alerts on actions with custom button colors:
+##### Chained Alerts on actions with custom button colors:
 ```swift
 //Chaining alerts with messages on button click
 SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently delete!", style: AlertStyle.Warning, buttonTitle:"No, cancel plx!", buttonColor:UIColorFromRGB(0xD0D0D0) , otherButtonTitle:  "Yes, delete it!", otherButtonColor: UIColorFromRGB(0xDD6B55)) { (isOtherButton) -> Void in
@@ -46,22 +46,22 @@ SweetAlert().showAlert("Are you sure?", subTitle: "You file will permanently del
             }
 }
 ```
-#####Custom icon alert:
+##### Custom icon alert:
 ```swift
 SweetAlert().showAlert("Sweet!", subTitle: "Here's a custom image.", style: AlertStyle.CustomImag(imageFile: "thumb.jpg"))
 ```
 
-###Diffrent Animated Styles for Diffrent Purposes
+### Diffrent Animated Styles for Diffrent Purposes
 ```swift
 enum AlertStyle {
     case Success,Error,Warning,None
     case CustomImag(imageFile:String)
 }
 ```
-###Installation
+### Installation
 Add the `SwiftAlert.swift` in to your project.
 
-###Reuirements
+### Reuirements
 - Xcode 7.0+
 - iOS 7.0+
 
