@@ -59,8 +59,18 @@ open class SweetAlert: UIViewController {
         contentView.layer.borderWidth = 0.5
         contentView.addSubview(titleLabel)
         contentView.addSubview(subTitleTextView)
-        contentView.backgroundColor = UIColor.colorFromRGB(0xFFFFFF)
-        contentView.layer.borderColor = UIColor.colorFromRGB(0xCCCCCC).cgColor
+        if #available(iOS 11.0, *) {
+            contentView.backgroundColor = UIColor.init(named: "background")
+        } else {
+            contentView.backgroundColor = .white
+            // Fallback on earlier versions
+        } //UIColor.colorFromRGB(0xFFFFFF)
+        if #available(iOS 11.0, *) {
+            contentView.layer.borderColor = UIColor.init(named: "borderColorSweetAlert")?.cgColor
+        } else {
+            contentView.layer.borderColor  = UIColor.colorFromRGB(0xCCCCCC).cgColor
+            // Fallback on earlier versions
+        }
         view.addSubview(contentView)
     }
 
@@ -69,14 +79,24 @@ open class SweetAlert: UIViewController {
         titleLabel.numberOfLines = 1
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: kFont, size:25)
-        titleLabel.textColor = UIColor.colorFromRGB(0x575757)
+        if #available(iOS 11.0, *) {
+            titleLabel.textColor = UIColor.init(named: "labelColor")
+        } else {
+            titleLabel.textColor = .black
+            // Fallback on earlier versions
+        }//UIColor.colorFromRGB(0x575757)
     }
 
     fileprivate func setupSubtitleTextView() {
         subTitleTextView.text = ""
         subTitleTextView.textAlignment = .center
         subTitleTextView.font = UIFont(name: kFont, size:16)
-        subTitleTextView.textColor = UIColor.colorFromRGB(0x797979)
+        if #available(iOS 11.0, *) {
+            subTitleTextView.textColor = UIColor.init(named: "labelColor")
+        } else {
+            subTitleTextView.textColor = .black
+            // Fallback on earlier versions
+        }//UIColor.colorFromRGB(0x797979)
         subTitleTextView.isEditable = false
     }
 
@@ -111,7 +131,7 @@ open class SweetAlert: UIViewController {
         // Subtitle
         if !self.subTitleTextView.text.isEmpty {
             let subtitleString = subTitleTextView.text! as NSString
-            let rect = subtitleString.boundingRect(with: CGSize(width: width, height: 0.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:subTitleTextView.font!], context: nil)
+            let rect = subtitleString.boundingRect(with: CGSize(width: width, height: 0.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:subTitleTextView.font!], context: nil)
             textViewHeight = ceil(rect.size.height) + 10.0
             subTitleTextView.frame = CGRect(x: x, y: y, width: width, height: textViewHeight)
             contentView.addSubview(subTitleTextView)
@@ -121,7 +141,7 @@ open class SweetAlert: UIViewController {
         var buttonRect:[CGRect] = []
         for button in buttons {
             let string = button.title(for: UIControlState())! as NSString
-            buttonRect.append(string.boundingRect(with: CGSize(width: width, height:0.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:[NSFontAttributeName:button.titleLabel!.font], context:nil))
+            buttonRect.append(string.boundingRect(with: CGSize(width: width, height:0.0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes:[NSAttributedStringKey.font:button.titleLabel!.font], context:nil))
         }
 
         var totalWidth: CGFloat = 0.0
@@ -160,7 +180,7 @@ open class SweetAlert: UIViewController {
         contentView.clipsToBounds = true
     }
 
-    open func pressed(_ sender: UIButton!) {
+    @objc open func pressed(_ sender: UIButton!) {
         self.closeAlert(sender.tag)
     }
 
@@ -222,7 +242,12 @@ open class SweetAlert: UIViewController {
     }
 
     open func showAlert(_ title: String, subTitle: String?, style: AlertStyle,buttonTitle: String, action: ((_ isOtherButton: Bool) -> Void)? = nil) -> SweetAlert {
-        _ = showAlert(title, subTitle: subTitle, style: style, buttonTitle: buttonTitle,buttonColor: UIColor.colorFromRGB(0xAEDEF4))
+        if #available(iOS 11.0, *) {
+            _ = showAlert(title, subTitle: subTitle, style: style, buttonTitle: buttonTitle,buttonColor: UIColor.init(named: "buttonColorSweetAlert")!)
+        } else {
+            _ = showAlert(title, subTitle: subTitle, style: style, buttonTitle: buttonTitle,buttonColor:  UIColor.colorFromRGB(0xAEDEF4))
+            // Fallback on earlier versions
+        }
         userAction = action
         return self
     }
