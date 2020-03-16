@@ -53,12 +53,13 @@ let s_pSweetAlert = SweetAlertObjc()
     @objc static  let None:String      = "None"
     
     
-    @objc class func getInstance() -> SweetAlertObjc {
+    @objc public class func getInstance() -> SweetAlertObjc {
         return s_pSweetAlert
         
     }
     
-    init() {
+    
+    public init() {
         super.init(nibName: nil, bundle: nil)
         self.view.frame = UIScreen.main.bounds
         self.view.autoresizingMask = [UIView.AutoresizingMask.flexibleHeight, UIView.AutoresizingMask.flexibleWidth]
