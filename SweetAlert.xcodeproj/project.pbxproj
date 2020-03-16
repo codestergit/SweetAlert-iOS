@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		784864ED6A0B7AF68C8DE1D8 /* SweetAlert.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 784869A188ADBAB6A90C84DF /* SweetAlert.podspec */; };
-		9B4286E81A0D2F5C00E9913B /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4286E71A0D2F5C00E9913B /* SweetAlert.swift */; };
+		95AAC7AD241FE1B50018A876 /* SweetAlertObjc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4286E71A0D2F5C00E9913B /* SweetAlertObjc.swift */; };
 		9B4286EB1A0D2F7700E9913B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4286E91A0D2F7700E9913B /* AppDelegate.swift */; };
 		9B4286EC1A0D2F7700E9913B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4286EA1A0D2F7700E9913B /* ViewController.swift */; };
 		9B4286EE1A0D2FA000E9913B /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9B4286ED1A0D2FA000E9913B /* Images.xcassets */; };
@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		784869A188ADBAB6A90C84DF /* SweetAlert.podspec */ = {isa = PBXFileReference; lastKnownFileType = file.podspec; path = SweetAlert.podspec; sourceTree = "<group>"; };
-		9B4286E71A0D2F5C00E9913B /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SweetAlert.swift; path = SweetAlert/SweetAlert.swift; sourceTree = SOURCE_ROOT; };
+		9B4286E71A0D2F5C00E9913B /* SweetAlertObjc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SweetAlertObjc.swift; path = SweetAlert/SweetAlertObjc.swift; sourceTree = SOURCE_ROOT; };
 		9B4286E91A0D2F7700E9913B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = SweetAlert/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		9B4286EA1A0D2F7700E9913B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = SweetAlert/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		9B4286ED1A0D2FA000E9913B /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SweetAlert/Images.xcassets; sourceTree = SOURCE_ROOT; };
@@ -103,7 +103,7 @@
 		9B4CD12D1A06E7EF00B65DE0 /* SweetAlert */ = {
 			isa = PBXGroup;
 			children = (
-				9B4286E71A0D2F5C00E9913B /* SweetAlert.swift */,
+				9B4286E71A0D2F5C00E9913B /* SweetAlertObjc.swift */,
 			);
 			name = SweetAlert;
 			sourceTree = "<group>";
@@ -148,6 +148,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -183,9 +184,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95AAC7AD241FE1B50018A876 /* SweetAlertObjc.swift in Sources */,
 				9B4286EC1A0D2F7700E9913B /* ViewController.swift in Sources */,
 				9B4286EB1A0D2F7700E9913B /* AppDelegate.swift in Sources */,
-				9B4286E81A0D2F5C00E9913B /* SweetAlert.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,7 +305,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GNDBL.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -316,7 +317,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "GNDBL.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
